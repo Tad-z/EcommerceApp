@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+.featured-products {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 8px;
+}
+
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 50%;
+}
+.track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translate(15%);
+  }
+  to {
+    transform: translate(85%);
+  }
+}
+
+/* .new-product {
+  @apply flex justify-center gap-5 mt-3
+}
+.track {
+  @apply absolute whitespace-nowrap will-change-transform w-full
+} */
+.new {
+  @apply flex justify-start gap-5 relative h-96 w-full overflow-x-hidden overflow-y-hidden
+}
+.card {
+  @apply mb-2 block rounded-lg border border-blue-200 shadow-md;
+}
+.checkout-card {
+  @apply mt-2 block rounded-lg border border-blue-200 shadow-md h-44;
+}
+.card-slide {
+  @apply mt-2 mb-2 block rounded-lg border h-80 hover:scale-105 border-blue-200 shadow-md ;
+}
+.add-to-cart-button {
+  @apply rounded-md w-64 m-auto mb-1 bg-amber-400 py-2 px-4 shadow outline-none hover:bg-amber-500 active:bg-amber-500;
+}
+.update-products-button {
+  @apply rounded-md w-40 m-auto border mb-1 border-blue-400 py-2 px-4 shadow outline-none hover:bg-blue-300;
+}
+.view-details-button {
+  @apply rounded-md w-64 m-auto border mb-1 border-blue-400 py-2 px-4 shadow outline-none hover:bg-blue-300;
+}
+.sign-up-button {
+  @apply rounded-md w-64 m-auto border mb-1 border-zinc-400 py-2 px-4 shadow outline-none hover:bg-blue-300;
+}
+.back-to-products-button {
+  @apply rounded-md w-44 bg-zinc-700 m-1 py-2 px-4 shadow outline-none active:bg-zinc-800;
+}
+.size-button {
+  @apply border m-1 mb-4 border-blue-400 py-2 px-4 shadow outline-none;
+}
+.image {
+  @apply h-3/5 w-full rounded-lg object-cover bg-white;
+}
+.image-slide {
+  @apply h-3/5 w-full rounded-lg object-cover bg-white;
+}
+.form {
+  @apply  flex justify-center mb-6
+}
+.input {
+  @apply border-2 border-black w-56 rounded-xl mb-1 h-9 px-3 py-3
+}
+
+@media (prefers-color-scheme: white) {
+  html {
+    color-scheme: white;
+  }
+  body {
+    color: black;
+    background: white;
+  }
+}
