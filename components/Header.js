@@ -5,11 +5,10 @@ import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-
 const Header = ({ title }) => {
   const [cart, setCart] = useState([]);
   const [auth, setAuth] = useState("");
-  const router = useRouter()
+  const router = useRouter();
   const getCart = async () => {
     const cartItems = await ApiCall.getMethod("http://localhost:4000/cart");
     if (!cartItems) {
@@ -18,7 +17,6 @@ const Header = ({ title }) => {
       setCart(cartItems);
     }
   };
-  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -32,7 +30,7 @@ const Header = ({ title }) => {
 
   const { data = [] } = cart;
   const cartItems = data;
- 
+
   return (
     <>
       <Head>
@@ -63,12 +61,16 @@ const Header = ({ title }) => {
                     )}
                   </a>
                 </Link>
-                <Link onClick={() => {
-                  localStorage.removeItem("token")
-                  localStorage.removeItem("isAuthenticated")
-                  router.push('/')}}>
-                  <a className="p-3">Logout</a>
-                </Link>
+                <a
+                  className="p-2 cursor-pointer" 
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("isAuthenticated");
+                    router.push("/");
+                  }}
+                >
+                  Logout
+                </a>
               </>
             )}
             {auth == null && (
