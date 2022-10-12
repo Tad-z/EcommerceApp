@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import ApiCall from './api/hello'
 import { toast } from 'react-toastify'
 import { getError } from '../container/error'
-
+import { useRouter } from 'next/router'
 
 export default function LoginScreen() {
   const {
@@ -15,6 +15,7 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
 
+  const router = useRouter()
   const submitHandler = async ({ username, password }) => {
     try {
       const response = await ApiCall.postMethod("http://localhost:4000/user/login", {
@@ -33,6 +34,7 @@ export default function LoginScreen() {
         toast.error("Something went wrong")
         console.log("error1");
       }
+      router.push('/')
     } catch (err) {
       toast.error(getError(err));
       console.log(err.message);

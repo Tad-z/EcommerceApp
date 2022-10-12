@@ -60,7 +60,7 @@ a {
   @apply mt-2 block rounded-lg border border-blue-200 shadow-md h-44;
 }
 .card-slide {
-  @apply mt-2 mb-2 block rounded-lg border h-80 hover:scale-105 border-blue-200 shadow-md ;
+  @apply mt-2 mb-2 block w-full rounded-lg border h-80 hover:scale-105 border-blue-200 shadow-md ;
 }
 .add-to-cart-button {
   @apply rounded-md w-64 m-auto mb-1 bg-amber-400 py-2 px-4 shadow outline-none hover:bg-amber-500 active:bg-amber-500;

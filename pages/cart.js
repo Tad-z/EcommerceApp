@@ -8,16 +8,31 @@ import Main from '../components/Main';
 import ApiCall from './api/hello';
 
 
-const defaultEndpoint = "http://localhost:4000/cart"
+// const defaultEndpoint = "http://localhost:4000/cart"
 
-export async function getServerSideProps() {
-  const res = await ApiCall.getMethod(defaultEndpoint);
-  return { props: { res } }  
-}
+// export async function getServerSideProps() {
+//   const res = await ApiCall.getMethod(defaultEndpoint);
+//   return { props: { res } }  
+// }
 
-export default function CartScreen({ res }) {
-  const { data = [] } = res
-  const [cartItems, setCartItems] = useState(data)
+export default function CartScreen() {
+  // const { data = [] } = res
+  // const [cartItems, setCartItems] = useState(data)
+  const [cart, setCart] = useState([]);
+  const getCart = async () => {
+    const cartItems = await ApiCall.getMethod("http://localhost:4000/cart")
+    if (!cartItems) {
+      setCart([])
+    } else {
+      setCart(cartItems)
+    }
+  }
+  useEffect(() => {
+    getCart()
+  }, [cart])
+
+  const { data = [] } = cart
+  const cartItems = data
   const router = useRouter()
 
   const removeItemHandler = async (item) => {
@@ -25,7 +40,7 @@ export default function CartScreen({ res }) {
     const id = item.CartId
     await axios.delete(`http://localhost:4000/cart/${id}`)
 
-    setCartItems(filteredCart)
+    setCart(filteredCart)
   }
 
  

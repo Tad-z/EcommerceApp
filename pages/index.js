@@ -22,7 +22,7 @@ export default function Home({ data, page }) {
   const products = result.products;
   const [input, setInput] = useState("")
   const Products = products.filter((product) => product.title.toLowerCase().includes(input))
-  const featuredProducts = products.slice(4, 9) || (10, 16)
+  const featuredProducts = products.slice(4, 9) || (8, 14)
   return (
     <>
       <Header title="Home Page"/>

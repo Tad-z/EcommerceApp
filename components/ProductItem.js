@@ -10,9 +10,10 @@ import { useRouter } from 'next/router';
 
 
 export default function ProductItem({ product }) {
-  // const router = useRouter()
+  const router = useRouter()
   // router.push('login?redirect=/index')
   const addToCartHandler = async () => {
+    router.push('login?redirect=/cart')
     try {
       const post = { productId: product._id }
       const result = await ApiCall.postMethod(`http://localhost:4000/cart/`, post)
