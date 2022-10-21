@@ -29,7 +29,7 @@ export default function CartScreen() {
   }
   useEffect(() => {
     getCart()
-  }, [cart])
+  })
 
   const { data = [] } = cart
   const cartItems = data
@@ -99,7 +99,7 @@ export default function CartScreen() {
                       </div>
                     </li>
                     <li>
-                      <button onClick={() => router.push('login?redirect=/shipping')} className='add-to-cart-button w-full'>
+                      <button onClick={() => router.push('/shipping')} className='add-to-cart-button w-full'>
                         Checkout
                       </button>
                     </li>

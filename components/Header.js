@@ -22,11 +22,10 @@ const Header = ({ title }) => {
     if (typeof window !== "undefined") {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
-      console.log(auth);
     }
     getCart();
     // navItemsHandler()
-  }, []);
+  });
 
   const { data = [] } = cart;
   const cartItems = data;

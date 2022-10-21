@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Main from '../components/Main'
 import { useForm } from 'react-hook-form'
 import ApiCall from './api/hello'
+import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify'
 import { getError } from '../container/error'
 import { useRouter } from 'next/router'
