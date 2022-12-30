@@ -2,11 +2,11 @@ import React from 'react'
 import Header from '../components/Header'
 import Main from '../components/Main'
 import { useForm } from 'react-hook-form'
-import ApiCall from './api/hello'
+import ApiCall from './api/helper'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import "react-toastify/dist/ReactToastify.css";
-import { getError } from '../container/error'
+import { getError } from '../reducers/error'
 
 
 export default function SignupScreen() {

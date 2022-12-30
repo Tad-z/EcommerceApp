@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CheckoutWizard from "../components/CheckoutWizard";
 import Header from "../components/Header";
@@ -17,6 +17,7 @@ export default function ShippingScreen() {
     setValue,
     getValues,
   } = useForm();
+
 
   const submitHandler = async ({ fullname, city, adress }) => {
     const cart = await ApiCall.getMethod("http://localhost:4000/cart");

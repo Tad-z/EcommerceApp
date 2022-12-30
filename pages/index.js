@@ -8,21 +8,47 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 
 
-export async function getServerSideProps({ query }) {
-  const page = Number(query.page) || 1;
-  const defaultEndpoint = `http://localhost:4000/products/page/?page=${page}`
-  const res = await fetch(defaultEndpoint);
-  const data = await res.json();
-  return { props: { page, data } }
-}
 
+// export async function getServerSideProps({ query }) {
+//   const page = Number(query.page) || 1;
+//   const defaultEndpoint = `http://localhost:4000/products/page/?page=${page}`
+//   const res = await fetch(defaultEndpoint);
+//   const data = await res.json();
+//   return { props: { page, data } }
+// }
+import { useFetchProducts } from "../hooks/fetchProducts";
+import { useSelector } from "react-redux";
+import { ColorRing } from "react-loader-spinner";
 
 export default function Home({ data, page }) {
-  const { result = [] } = data || {};
-  const products = result.products;
+  const [{ isLoading, serverError, apiData }] = useFetchProducts();
+  const products = useSelector (
+    (state) => state.products.queue
+  )
   const [input, setInput] = useState("")
   const Products = products.filter((product) => product.title.toLowerCase().includes(input))
   const featuredProducts = products.slice(4, 9) || (8, 14)
+  useSelector(state => console.log(state));
+  if (isLoading)
+    return (
+      <div className="loader">
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
+
+  if (serverError)
+    return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
+  // const { result = [] } = data || {};
+  // const products = result.products;
+  
   return (
     <>
       <Header title="Home Page"/>
@@ -42,11 +68,11 @@ export default function Home({ data, page }) {
           {Products.map((product) => <ProductItem product={product} key={product._id} />)}
         </div>
         <div className="flex justify-center my-2">
-          {result.next && <Link href={`/?page=${result.next.page}`}><button className={styles.button}> Next Page -{result.next.page} </button></Link>}
-          {result.previous && <Link href={`/?page=${result.previous.page}`}><button className={styles.button}> Previous Page -{result.previous.page} </button></Link>}
+          {/* {result.next && <Link href={`/?page=${result.next.page}`}><button className={styles.button}> Next Page -{result.next.page} </button></Link>}
+          {result.previous && <Link href={`/?page=${result.previous.page}`}><button className={styles.button}> Previous Page -{result.previous.page} </button></Link>} */}
         </div>
       </Main>
       <Footer />
     </>
   )
-}
+ }

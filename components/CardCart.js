@@ -11,6 +11,10 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
     function incrementCount() {
         setCount(count + 1)
     }
+    const updatedItem = {
+      ...item,
+      quantity: count
+    };
     return (
         <tr className="border-b">
             <td>
@@ -27,13 +31,13 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
                 <button onClick={() => decrementCount()}>
                     <AiOutlineMinusSquare className='h-7 w-7 mx-1 text-center' />
                 </button>
-                {item.quantity = count}
+                {updatedItem.quantity}
                 <button onClick={() => incrementCount()}>
                     <AiOutlinePlusSquare className='h-7 w-7 mx-1 text-center' />
                 </button>
             </td>
             <td className='p-5 text-center'>
-                <p>N{item.product.price * item.quantity}</p>
+                <p>N{item.product.price * updatedItem.quantity}</p>
             </td>
             <td className='p-5 text-center'>
                 <button onClick={() => removeItemHandler(item)}>
@@ -41,7 +45,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
                 </button>
             </td>
             <td>
-                <button className='update-products-button w-full' onClick={() => updateProducts(item)}>
+                <button className='update-products-button w-full' onClick={() => updateProducts(updatedItem)}>
                     Update product
                 </button>
             </td>
@@ -50,4 +54,5 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
     )
 }
 
-export default CardCart
+export default CardCart;
+        

@@ -1,11 +1,15 @@
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { ColorRing } from "react-loader-spinner";
 import CardCart from '../components/CardCart';
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import Main from '../components/Main';
-import ApiCall from './api/hello';
+import ApiCall from './api/helper';
+import { useFetchCart } from '../hooks/fetchCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCart } from '../reducers/cartReducer';
 
 
 // const defaultEndpoint = "http://localhost:4000/cart"
@@ -18,49 +22,79 @@ import ApiCall from './api/hello';
 export default function CartScreen() {
   // const { data = [] } = res
   // const [cartItems, setCartItems] = useState(data)
-  const [cart, setCart] = useState([]);
-  const getCart = async () => {
-    const cartItems = await ApiCall.getMethod("http://localhost:4000/cart")
-    if (!cartItems) {
-      setCart([])
-    } else {
-      setCart(cartItems)
-    }
-  }
-  useEffect(() => {
-    getCart()
-  })
+  // const [cart, setCart] = useState([]);
+  // const getCart = async () => {
+  //   const cartItems = await ApiCall.getMethod("http://localhost:4000/cart")
+  //   if (!cartItems) {
+  //     setCart([])
+  //   } else {
+  //     setCart(cartItems)
+  //   }
+  // }
+  // useEffect(() => {
+  //   getCart()
+  // }, [cart])
 
-  const { data = [] } = cart
-  const cartItems = data
+  // const { data = [] } = cart
+  // const cartItems = data
+  const dispatch = useDispatch();
+  const [{ isLoading, serverError, apiData }] = useFetchCart();
+  useSelector(state => console.log(state));
+  const cartItems = useSelector (
+    (state) => state.cart.cart
+  )
+
+  console.log(cartItems);
   const router = useRouter()
+  if (isLoading)
+  return (
+    <div className="loader">
+      <ColorRing
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+      />
+    </div>
+  );
+
+if (serverError)
+  return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
   const removeItemHandler = async (item) => {
     const filteredCart = cartItems.filter(items => items.CartId !== item.CartId)
+    setCart(filteredCart)
     const id = item.CartId
     await axios.delete(`http://localhost:4000/cart/${id}`)
-
-    setCart(filteredCart)
   }
 
  
   const updateProducts = async (item) => {
     console.log(item);
-    const id = item.CartId
-    console.log("id", id);
+    const productId = item.CartId
+    console.log("id", productId);
     const post = { "quantity": item.quantity }
-    console.log("p", post);
-    await axios.patch(`http://localhost:4000/cart/${id}`, post)
-
+    const quantity = item.quantity
+    dispatch(updateCart({ productId, quantity }));
+    console.log("q", quantity);
+    await axios.patch(`http://localhost:4000/cart/${productId}`, post)
   }
+
+  
+   
+
 
   return (
     <>
       <Header title='Shopping Cart' />
       <Main>
         <h1 className='mb-4 text-xl font-bold'>Shopping Cart</h1>
+   
         {
-          cartItems.length === 0 ?
+          cartItems.length === 0  ?
             (<div>
               Cart is empty. <Link href="/">Continue Shopping</Link>
             </div>) :

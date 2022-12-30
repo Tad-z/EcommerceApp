@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import ApiCall from "../pages/api/hello";
+import ApiCall from "../pages/api/helper";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
+import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -25,7 +26,7 @@ const Header = ({ title }) => {
     }
     getCart();
     // navItemsHandler()
-  });
+  }, [cart]);
 
   const { data = [] } = cart;
   const cartItems = data;
@@ -46,25 +47,23 @@ const Header = ({ title }) => {
           <Link href="/">
             <a className="text-lg font-bold">EcomerceApp</a>
           </Link>
-
-          <div>
+          <div className="flex justify-center">
             {auth == "true" && (
               <>
                 <Link href="/cart">
-                  <a className="p-2">
+                  <a className="p-2 ">
                     Cart
                     {cartItems.length > 0 && (
-                      <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font bold text-white">
+                      <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
                         {cartItems.length}
                       </span>
                     )}
                   </a>
                 </Link>
                 <a
-                  className="p-2 cursor-pointer" 
+                  className="p-2 cursor-pointer"
                   onClick={() => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("isAuthenticated");
+                    localStorage.clear();
                     router.push("/");
                   }}
                 >

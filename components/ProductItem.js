@@ -2,8 +2,8 @@ import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ApiCall from "../pages/api/hello";
-import { getError } from "../container/error";
+import ApiCall from "../pages/api/helper";
+import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
 
 export default function ProductItem({ product }) {

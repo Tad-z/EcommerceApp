@@ -20,6 +20,7 @@ export async function getServerSideProps() {
 
 export default function ProductScreen({ data }) {
   const { products = [] } = data || {};
+  const router = useRouter();
   const { query } = useRouter()
   const { slug } = query;
   const ratingChanged = (newRating) => {
@@ -34,22 +35,32 @@ export default function ProductScreen({ data }) {
     )
   }
   const addToCartHandler = async () => {
-    try {
-      const post = { productId: product._id }
-      const result = await ApiCall.postMethod(`http://localhost:4000/cart/`, post)
-      if (result) {
-        toast("You have added to cart successfully");
-        console.log("success");
+    if (typeof window !== "undefined") {
+      const auth = window.localStorage.getItem("isAuthenticated");
+      if (auth == null) {
+        router.push("/login");
       } else {
-        toast.error("Something went wrong")
-        console.log("error1");
+        try {
+          const post = { productId: product._id };
+          const result = await ApiCall.postMethod(
+            `http://localhost:4000/cart/`,
+            post
+          );
+          if (result) {
+            toast("You have added to cart successfully");
+            console.log("success");
+            router.push("/cart");
+          } else {
+            toast.error("Something went wrong");
+            console.log("error1");
+          }
+        } catch (err) {
+          toast.error(getError(err));
+          console.log("error2");
+        }
       }
-    } catch (err) {
-      toast.error(getError(err));
-      console.log("error2");
     }
-
-  }
+  };
   return (
     <>
       <Header title={product?.name} />
