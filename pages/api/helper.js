@@ -15,6 +15,19 @@ export async function getServerData(url) {
   }
 }
 
+export async function postServerData(url, payload) {
+  if (typeof window !== "undefined") {
+    let token = window.localStorage.getItem("token");
+    let reqInstance = axios.create({
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await reqInstance.post(url, payload);
+    return data;
+  }
+}
+
 // export default async function signUphandler(req, res) {
 //   const user = {username: user.username,
 //                 email: user.email,

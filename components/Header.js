@@ -2,34 +2,32 @@ import React, { useContext, useEffect, useState } from "react";
 import ApiCall from "../pages/api/helper";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
+import { useFetchCart } from '../hooks/fetchCart';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Header = ({ title }) => {
-  const [cart, setCart] = useState([]);
+  const dispatch = useDispatch();
   const [auth, setAuth] = useState("");
-  const router = useRouter();
-  const getCart = async () => {
-    const cartItems = await ApiCall.getMethod("http://localhost:4000/cart");
-    if (!cartItems) {
-      setCart([]);
-    } else {
-      setCart(cartItems);
-    }
-  };
+  const router = useRouter(); 
+  useFetchCart();
+  useSelector(state => console.log(state));
+  const cartItems = useSelector (
+    (state) => state.cart.cart
+  )
+  const username = useSelector (
+    (state) => state.loginDetails.username
+  )
+ 
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
     }
-    getCart();
-    // navItemsHandler()
-  }, [cart]);
-
-  const { data = [] } = cart;
-  const cartItems = data;
+  });
 
   return (
     <>
@@ -50,6 +48,7 @@ const Header = ({ title }) => {
           <div className="flex justify-center">
             {auth == "true" && (
               <>
+                <a className="p-2">{`Hey ${username}`}</a>
                 <Link href="/cart">
                   <a className="p-2 ">
                     Cart

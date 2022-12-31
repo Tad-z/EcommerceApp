@@ -22,9 +22,19 @@ export const cartReducer = createSlice({
             product.quantity = quantity;
         }
     },
+    removeItemFromCart: (state, action) => {
+      const { productId } = action.payload;
+      const filteredCart = state.cart.filter(
+        (element => element.CartId !== productId)
+      );
+      return {
+        ...state,
+        cart: filteredCart,
+      };
+    }
   },
 });
 
-export const { setCart, updateCart } = cartReducer.actions;
+export const { setCart, updateCart, removeItemFromCart } = cartReducer.actions;
 
 export default cartReducer.reducer;

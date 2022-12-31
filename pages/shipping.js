@@ -5,8 +5,8 @@ import Header from "../components/Header";
 import Main from "../components/Main";
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
-import { getError } from "../container/error";
-import ApiCall from "./api/hello";
+import { getError } from "../reducers/error";
+import { getServerData, postServerData } from "./api/helper";
 
 
 export default function ShippingScreen() {
@@ -20,10 +20,10 @@ export default function ShippingScreen() {
 
 
   const submitHandler = async ({ fullname, city, adress }) => {
-    const cart = await ApiCall.getMethod("http://localhost:4000/cart");
-    const { data = [] } = cart
+    // const cart = await getServerData("http://localhost:4000/cart");
+    // const { data = [] } = cart
     try {
-      const response = await ApiCall.postMethod(
+      const response = await postServerData(
         "http://localhost:4000/orders",
         {
           fullname,

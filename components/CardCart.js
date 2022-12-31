@@ -6,7 +6,11 @@ import { BiXCircle } from 'react-icons/bi';
 const CardCart = ({ item, removeItemHandler, updateProducts }) => {
     const [count, setCount] = useState(item.quantity);
     function decrementCount() {
-        setCount(count - 1)
+        if (count > 1){
+            setCount(count - 1)
+        }
+        return count;
+         
     }
     function incrementCount() {
         setCount(count + 1)
@@ -55,4 +59,3 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
 }
 
 export default CardCart;
-        

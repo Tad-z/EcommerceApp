@@ -9,7 +9,7 @@ import Main from '../components/Main';
 import ApiCall from './api/helper';
 import { useFetchCart } from '../hooks/fetchCart';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCart } from '../reducers/cartReducer';
+import { removeItemFromCart, updateCart } from '../reducers/cartReducer';
 
 
 // const defaultEndpoint = "http://localhost:4000/cart"
@@ -65,10 +65,9 @@ if (serverError)
   return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
   const removeItemHandler = async (item) => {
-    const filteredCart = cartItems.filter(items => items.CartId !== item.CartId)
-    setCart(filteredCart)
-    const id = item.CartId
-    await axios.delete(`http://localhost:4000/cart/${id}`)
+    const productId = item.CartId;
+    dispatch(removeItemFromCart({ productId }));
+    await axios.delete(`http://localhost:4000/cart/${productId}`);
   }
 
  
@@ -92,8 +91,7 @@ if (serverError)
       <Header title='Shopping Cart' />
       <Main>
         <h1 className='mb-4 text-xl font-bold'>Shopping Cart</h1>
-   
-        {
+        { 
           cartItems.length === 0  ?
             (<div>
               Cart is empty. <Link href="/">Continue Shopping</Link>

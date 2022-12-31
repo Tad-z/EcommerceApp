@@ -7,8 +7,8 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
-import ApiCall from '../api/hello';
-import { getError } from '../../container/error';
+import ApiCall, { postServerData } from '../api/helper';
+import { getError } from '../../reducers/error';
 
 
 export async function getServerSideProps() {
@@ -42,7 +42,7 @@ export default function ProductScreen({ data }) {
       } else {
         try {
           const post = { productId: product._id };
-          const result = await ApiCall.postMethod(
+          const result = await postServerData(
             `http://localhost:4000/cart/`,
             post
           );

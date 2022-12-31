@@ -8,8 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify'
 import { getError } from '../reducers/error'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import * as Action from "../reducers/loginReducer";
 
 export default function LoginScreen() {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     register,
@@ -18,6 +21,7 @@ export default function LoginScreen() {
 
   const router = useRouter()
   const submitHandler = async ({ username, password }) => {
+    dispatch(Action.setUsername({ username }) )
     try {
       const response = await ApiCall.postMethod("http://localhost:4000/user/login", {
         username,

@@ -60,6 +60,7 @@ sup {
   }
 }
 
+
 .loader {
   @apply w-full h-[300] m-auto flex justify-center items-center
 }
