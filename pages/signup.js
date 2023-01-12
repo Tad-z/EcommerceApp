@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../reducers/error";
+import styles from "../styles/form.module.css";
 
 export default function SignupScreen() {
   const router = useRouter();
@@ -39,20 +40,14 @@ export default function SignupScreen() {
   return (
     <>
       <Header title="signup" />
-      <Main>
-        <div className="flex flex-col justify-center items-center">
-          <h1 className="mt-12 text-2xl text-center font-bold">
+      <Main className={styles.body}>
+        <div className={styles.container}>
+          <h1 className={styles.h1}>
             Create an Account
           </h1>
-          <form
-            className="my-5 mx-72 w-[600px] box-border border border-zinc-800 rounded-lg p-4"
-            onSubmit={handleSubmit(submitHandler)}
-          >
-            <div className="p-1">
-              <h1 className="mb-5 text-xl font-semibold">
-                Personal Information
-              </h1>
-              <div className="mb-4">
+          <p className={styles.p}>Personal Information</p>
+          <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
+              <div className={styles.row}>
                 <p htmlFor="username" className="font-bold mb-2 text-sm">
                   Username&nbsp;<span className="text-red-600">*</span>
                 </p>
@@ -65,8 +60,7 @@ export default function SignupScreen() {
                       message: "Username should have minimum of 4 characters",
                     },
                   })}
-                  className="w-[550px]  
-                shadow-sm rounded bg-[#F2F2F2] py-2 px-4 outline-blue-300"
+                  className={styles.input}
                   id="username"
                   autoFocus
                 />
@@ -74,12 +68,13 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.username.message}</div>
                 )}
               </div>
-              <div className="mb-4">
+              <div className={styles.row}>
                 <p htmlFor="email" className="font-bold mb-2 text-sm">
                   Email&nbsp;<span className="text-red-600">*</span>
                 </p>
                 <input
                   type="email"
+                  className={styles.input}
                   {...register("email", {
                     required: "Please enter your email address",
                     pattern: {
@@ -87,8 +82,6 @@ export default function SignupScreen() {
                       message: "Please enter a valid email address",
                     },
                   })}
-                  className="w-[550px]  
-                shadow-sm rounded bg-[#F2F2F2] py-2 px-4 outline-blue-300"
                   id="email"
                   autoFocus
                 />
@@ -96,12 +89,13 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.email.message}</div>
                 )}
               </div>
-              <div className="mb-4">
+              <div className={styles.row}>
                 <p htmlFor="password" className="font-bold mb-4 text-sm">
                   Password &nbsp;<span className="text-red-600">*</span>
                 </p>
                 <input
                   type="password"
+                  className={styles.input}
                   {...register("password", {
                     required: "Please enter a strong password",
                     minLength: {
@@ -109,8 +103,6 @@ export default function SignupScreen() {
                       message: "Password should have minimum of 6 characters",
                     },
                   })}
-                  className="w-[550px] 
-                shadow-sm rounded bg-[#F2F2F2] py-2 px-4  outline-blue-300"
                   id="password"
                   autoFocus
                 />
@@ -121,7 +113,6 @@ export default function SignupScreen() {
               <div className="mb-4">
                 <button className="sign-up-button">Sign Up</button>
               </div>
-            </div>
           </form>
         </div>
       </Main>

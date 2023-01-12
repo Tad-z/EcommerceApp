@@ -1,0 +1,136 @@
+.container,
+.container:before,
+.container:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+.body{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(
+        135deg,
+        #1f1f1f,
+        #161616
+    );
+}
+.container{
+    background-color: #ffffff;
+    width: 70%;
+    min-width: 390px;
+    padding: 35px 50px;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 10px;
+    box-shadow: 20px 30px 25px rgba(0,0,0,0.15);
+}
+.h1{
+    font-size: 30px;
+    text-align: center;
+    color: #1c093c;
+}
+.p{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #313030;
+    font-size: 14px;
+    font-weight: 400;
+}
+.form{
+    width: 100%;
+    position: relative;
+    margin: 30px auto 0 auto;
+}
+.row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-gap: 20px 30px;
+    margin-bottom: 20px;
+}
+.label{
+    color: #313030;
+    font-size: 14px;
+}
+
+.input{
+    width: 100%;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #313030;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+}
+
+.button{
+    border: none;
+    padding: 10px 20px;
+    background: linear-gradient(
+        130deg,
+        #313030,
+        #252525
+    );
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.series {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.seriesButton {
+    border-radius: 6px;
+    width: 11rem;
+    background: linear-gradient(
+        120deg,
+        #313030,
+        #252525
+    );
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border: none;
+    box-shadow: 0 0 0 2px #24234d;
+    outline: none;
+}
+
+.seriesButton:hover {
+    background: linear-gradient(
+        120deg,
+        #353535,
+        #1b1b1b
+    );
+}
+.seriesButton:active {
+    background: linear-gradient(
+        120deg,
+        #313030,
+        #252525
+    );
+    transform: translateY(2px);
+}
+
+.button:hover{
+    background: linear-gradient(
+        130deg,
+        #353535,
+        #1b1b1b
+    );
+
+}
+.button:active{
+    background: linear-gradient(
+        130deg,
+        #313030,
+        #252525
+    );
+    transform: translateY(2px);
+}
