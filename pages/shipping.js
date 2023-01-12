@@ -20,8 +20,6 @@ export default function ShippingScreen() {
 
 
   const submitHandler = async ({ fullname, city, adress }) => {
-    // const cart = await getServerData("http://localhost:4000/cart");
-    // const { data = [] } = cart
     try {
       const response = await postServerData(
         "http://localhost:4000/orders",
