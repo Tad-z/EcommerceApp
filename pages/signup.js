@@ -38,19 +38,18 @@ export default function SignupScreen() {
     }
   };
   return (
-    <>
+    <div className={styles.body}>
       <Header title="signup" />
-      <Main className={styles.body}>
         <div className={styles.container}>
           <h1 className={styles.h1}>
             Create an Account
           </h1>
           <p className={styles.p}>Personal Information</p>
           <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-              <div className={styles.row}>
-                <p htmlFor="username" className="font-bold mb-2 text-sm">
+              <div className={styles.column}>
+                <label htmlFor="username" className={styles.label}>
                   Username&nbsp;<span className="text-red-600">*</span>
-                </p>
+                </label>
                 <input
                   type="text"
                   {...register("username", {
@@ -68,10 +67,10 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.username.message}</div>
                 )}
               </div>
-              <div className={styles.row}>
-                <p htmlFor="email" className="font-bold mb-2 text-sm">
+              <div className={styles.column}>
+                <label htmlFor="email" className={styles.label}>
                   Email&nbsp;<span className="text-red-600">*</span>
-                </p>
+                </label>
                 <input
                   type="email"
                   className={styles.input}
@@ -89,10 +88,10 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.email.message}</div>
                 )}
               </div>
-              <div className={styles.row}>
-                <p htmlFor="password" className="font-bold mb-4 text-sm">
+              <div className={styles.column}>
+                <label htmlFor="password" className={styles.label}>
                   Password &nbsp;<span className="text-red-600">*</span>
-                </p>
+                </label>
                 <input
                   type="password"
                   className={styles.input}
@@ -110,12 +109,9 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.password.message}</div>
                 )}
               </div>
-              <div className="mb-4">
-                <button className="sign-up-button">Sign Up</button>
-              </div>
+                <button className={styles.button}>Sign Up</button>
           </form>
         </div>
-      </Main>
-    </>
+    </div>
   );
 }

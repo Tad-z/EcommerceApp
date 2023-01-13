@@ -12,8 +12,8 @@
     width: 100vw;
     background: linear-gradient(
         135deg,
-        #1f1f1f,
-        #161616
+        #3d1abd,
+        #3c2399
     );
 }
 .container{
@@ -55,7 +55,7 @@
     margin-bottom: 20px;
 }
 .label{
-    color: #313030;
+    color: #0e0d0d;
     font-size: 14px;
 }
 
@@ -63,23 +63,25 @@
     width: 100%;
     font-weight: 400;
     background-color: #ffffff;
-    color: #313030;
+    color: #1a1a1b;
     padding: 8px 10px;
     border-radius: 5px;
     border: 1.2px solid #c4cae0;
     margin-top: 5px;
+    margin-bottom: 4px;
 }
 
 .button{
     border: none;
+    margin-top: 1rem;
     padding: 10px 20px;
     background: linear-gradient(
         130deg,
-        #313030,
-        #252525
+        #3d1abd,
+        #3c2399
     );
     color: #ffffff;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 .series {
