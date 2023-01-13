@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import styles from "../styles/form.module.css";
 import * as Action from "../reducers/loginReducer";
 
 export default function LoginScreen() {
@@ -50,74 +51,63 @@ export default function LoginScreen() {
   };
 
   return (
-    <>
+    <div className={styles.body}>
       <Header title="login" />
-      <Main>
-        <div className="flex flex-col justify-center mx-auto max-w-screen-md items-center">
-          <h1 className="mt-12 text-2xl text-center font-bold">Login</h1>
-          <form
-            className=" mx-auto max-w-screen-md box-border border border-zinc-800 rounded-lg p-4"
-            onSubmit={handleSubmit(submitHandler)}
-          >
-            <div className="p-1">
-              <h1 className="mb-5 text-xl font-semibold">
-                Sign-In Information
-              </h1>
-              <div className="mb-4">
-                <p htmlFor="username" className="font-bold mb-2 text-sm">
-                  Username&nbsp;<span className="text-red-600">*</span>
-                </p>
-                <input
-                  type="text"
-                  {...register("username", {
-                    required: "Please enter a valid username",
-                    minLength: {
-                      value: 4,
-                      message: "Username should have minimum of 4 characters",
-                    },
-                  })}
-                  className="w-[550px] rounded shadow-sm bg-[#F2F2F2] py-2 px-4 outline-blue-300"
-                  id="username"
-                  autoFocus
-                />
-                {errors.username && (
-                  <div className="text-red-500">{errors.username.message}</div>
-                )}
-              </div>
-              <div className="mb-4">
-                <p htmlFor="password" className="font-bold mb-2 text-sm">
-                  Password &nbsp;<span className="text-red-600">*</span>
-                </p>
-                <input
-                  type="password"
-                  {...register("password", {
-                    required: "Please enter a strong password",
-                    minLength: {
-                      value: 6,
-                      message: "Password should have minimum of 6 characters",
-                    },
-                  })}
-                  className="w-[550px] rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-blue-300"
-                  id="password"
-                  autoFocus
-                />
-                {errors.password && (
-                  <div className="text-red-500">{errors.password.message}</div>
-                )}
-              </div>
-              <div className="mb-4">
-                <button type="submit" className="sign-up-button">
-                  Log In
-                </button>
-              </div>
-              <div className="mb-4">
-                Don&apos;t have an account? &nbsp;
-                <Link href="signup">Create an account</Link>
-              </div>
-            </div>
-          </form>
-        </div>
-      </Main>
-    </>
+      <div className={styles.container}>
+        <h1 className={styles.h1}>Login</h1>
+        <p className={styles.p}>Sign-In Information</p>
+        <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
+          <div className={styles.column}> 
+            <label htmlFor="username" className={styles.label}>
+              Username&nbsp;<span className="text-red-600">*</span>
+            </label>
+            <input
+              type="text"
+              {...register("username", {
+                required: "Please enter a valid username",
+                minLength: {
+                  value: 4,
+                  message: "Username should have minimum of 4 characters",
+                },
+              })}
+              className={styles.input}
+              id="username"
+              autoFocus
+            />
+            {errors.username && (
+              <div className="text-red-500">{errors.username.message}</div>
+            )}
+          </div>
+          <div className={styles.column}>
+            <label htmlFor="password" className={styles.label}>
+              Password &nbsp;<span className="text-red-600">*</span>
+            </label>
+            <input
+              type="password"
+              {...register("password", {
+                required: "Please enter a strong password",
+                minLength: {
+                  value: 6,
+                  message: "Password should have minimum of 6 characters",
+                },
+              })}
+              className={styles.input}
+              id="password"
+              autoFocus
+            />
+            {errors.password && (
+              <div className="text-red-500">{errors.password.message}</div>
+            )}
+          </div>
+            <button type="submit" className={styles.button}>
+              Log In
+            </button>
+          <div className="mb-2 mt-3">
+            <p className="sm: text-sm">Don&apos;t have an account? &nbsp;
+            <Link href="signup">Create an account</Link></p>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
