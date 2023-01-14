@@ -20,8 +20,6 @@ const Header = ({ title }) => {
   const username = useSelector (
     (state) => state.loginDetails.username
   )
- 
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const isauth = window.localStorage.getItem("isAuthenticated");

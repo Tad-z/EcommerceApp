@@ -22,7 +22,10 @@ export default function LoginScreen() {
 
   const router = useRouter();
   const submitHandler = async ({ username, password }) => {
-    dispatch(Action.setUsername({ username }));
+    console.log(username);
+    if(username){
+      dispatch(Action.setUsername({ username }));
+    }
     try {
       const response = await ApiCall.postMethod(
         "http://localhost:4000/user/login",

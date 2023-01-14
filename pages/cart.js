@@ -59,7 +59,7 @@ export default function CartScreen() {
       <Header title="Shopping Cart" />
       <Main>
         <h1 className="mb-4 text-xl font-bold">Shopping Cart</h1>
-        {cartItems.length === 0 ? (
+        {cartItems?.length === 0 ? (
           <div>
             Cart is empty. <Link href="/">Continue Shopping</Link>
           </div>
@@ -79,7 +79,7 @@ export default function CartScreen() {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((item) => (
+                    {cartItems?.map((item) => (
                       <>
                         <CardCart
                           key={item.slug}
@@ -96,8 +96,8 @@ export default function CartScreen() {
                 <ul>
                   <li>
                     <div className="pb-3 text-xl">
-                      Subtotal ({cartItems.length}) : N
-                      {cartItems.reduce(
+                      Subtotal ({cartItems?.length}) : N
+                      {cartItems?.reduce(
                         (a, c) => a + c.product.price * c.quantity,
                         0
                       )}
