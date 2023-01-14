@@ -109,7 +109,9 @@ export default function SignupScreen() {
                   <div className="text-red-500">{errors.password.message}</div>
                 )}
               </div>
+              <div className="flex justify-center">
                 <button className={styles.button}>Sign Up</button>
+              </div>   
           </form>
         </div>
     </div>
