@@ -66,7 +66,7 @@ export default function CartScreen() {
         ) : (
           <>
             <h1 className="mb-4 text-xl font-bold">Shopping Cart</h1>
-            <div className="grid md:grid-cols-4 md:gap-5">
+            <div className="grid md:grid-cols-4 md:gap-5 sm: grid-rows-2">
               <div className="overflow-x auto md:col-span-3">
                 <table className="min-w-full">
                   <thead className="border-b">
@@ -92,7 +92,7 @@ export default function CartScreen() {
                   </tbody>
                 </table>
               </div>
-              <div className="checkout-card p-5">
+              <div className="checkout-card place-self-center p-5">
                 <ul>
                   <li>
                     <div className="pb-3 text-xl">
