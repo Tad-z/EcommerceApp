@@ -80,7 +80,7 @@ sup {
   @apply rounded-md w-64 m-auto mb-1 bg-amber-400 py-2 px-4 shadow outline-none hover:bg-amber-500 active:bg-amber-500;
 }
 .update-products-button {
-  @apply rounded-md w-40 m-auto border mb-1 border-blue-400 py-2 px-4 shadow outline-none hover:bg-blue-300;
+  @apply rounded-md w-20 m-auto border mb-1 border-blue-400 p-2 shadow outline-none hover:bg-blue-300;
 }
 .next-button {
   @apply rounded-md w-32 m-auto border mb-1 border-blue-400 py-2 px-4 shadow outline-none hover:bg-blue-300;

@@ -35,7 +35,7 @@ const Header = ({ title }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ToastContainer position="bottom-center" limit={1} autoClose={5000} />
+      <ToastContainer position="bottom-center" limit={1} autoClose={3000} />
 
       {/* min h screen sets the page to full height */}
       <header>

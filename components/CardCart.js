@@ -24,13 +24,13 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
             <td>
                 <Link href={`/product/${item.product.slug}`}>
                     <a className='flex items-center'>
-                        <img src={`http://localhost:4000/${item.product.productImage}`} alt={item.title} width={50} height={50}></img>
+                        <img src={`http://localhost:4000/${item.product.productImage}`} alt={item.title} width={60} height={60}></img>
                         &nbsp;
                         {item.product.title}
                     </a>
                 </Link>
             </td>
-            <td className='p-5 text-right'>N{item.product.price}</td>
+            <td className='p-5 text-center'>N{item.product.price}</td>
             <td className='p-5 text-center flex justify-end items-center'>
                 <button onClick={() => decrementCount()}>
                     <AiOutlineMinusSquare className='h-7 w-7 mx-1 text-center' />
@@ -49,8 +49,8 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
                 </button>
             </td>
             <td>
-                <button className='update-products-button w-full' onClick={() => updateProducts(updatedItem)}>
-                    Update product
+                <button className='update-products-button' onClick={() => updateProducts(updatedItem)}>
+                    Update
                 </button>
             </td>
 
