@@ -66,7 +66,7 @@ export default function CartScreen() {
         ) : (
           <>
             <h1 className="mb-4 text-xl font-bold">Shopping Cart</h1>
-            <div className="grid md: grid-cols-4 md:gap-5">
+            <div className="grid md:grid-cols-4 md:gap-5">
               <div className="overflow-x auto md:col-span-3">
                 <table className="min-w-full">
                   <thead className="border-b">
