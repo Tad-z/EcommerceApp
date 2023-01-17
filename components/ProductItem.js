@@ -2,13 +2,12 @@ import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ApiCall, { postServerData } from "../pages/api/helper";
+import { postServerData } from "../pages/api/helper";
 import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
 
 export default function ProductItem({ product }) {
   const router = useRouter();
-  // router.push('login?redirect=/index')
   const addToCartHandler = async () => {
     if (typeof window !== "undefined") {
       const auth = window.localStorage.getItem("isAuthenticated");
