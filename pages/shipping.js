@@ -7,9 +7,11 @@ import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../reducers/error";
 import { getServerData, postServerData } from "./api/helper";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function ShippingScreen() {
+
   const {
     handleSubmit,
     register,
@@ -18,7 +20,7 @@ export default function ShippingScreen() {
     getValues,
   } = useForm();
 
-
+  const data = useSelector((state) => state.cart.cart);
   const submitHandler = async ({ fullname, city, adress }) => {
     try {
       const response = await postServerData(
@@ -27,7 +29,7 @@ export default function ShippingScreen() {
           fullname,
           city,
           adress,
-          data,
+          data
         }
       );
       if (response) {

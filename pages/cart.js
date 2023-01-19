@@ -16,8 +16,9 @@ export default function CartScreen() {
   const [{ isLoading, serverError, apiData }] = useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
+  console.log("p",cartItems);
+  
 
-  console.log(cartItems);
   const router = useRouter();
   if (isLoading)
     return (

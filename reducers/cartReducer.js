@@ -4,13 +4,18 @@ export const cartReducer = createSlice({
   name: "cart",
   initialState: {
     cart: [],
+    price: 0,
   },
   reducers: {
     setCart: (state, action) => {
       let { cartItems } = action.payload;
+      const subtotal = state.cart.reduce(
+        (a, c) => a + c.product.price * c.quantity, 0
+      );
       return {
         ...state,
         cart: cartItems,
+        price: subtotal,
       };
     },
     updateCart: (state, action) => {
@@ -31,7 +36,7 @@ export const cartReducer = createSlice({
         ...state,
         cart: filteredCart,
       };
-    }
+    },
   },
 });
 
