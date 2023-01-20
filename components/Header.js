@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Header = ({ title }) => {
-  const dispatch = useDispatch();
   const [auth, setAuth] = useState("");
   const router = useRouter(); 
   useFetchCart();
