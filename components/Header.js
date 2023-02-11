@@ -2,29 +2,30 @@ import React, { useContext, useEffect, useState } from "react";
 import ApiCall from "../pages/api/helper";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
-import { useFetchCart } from '../hooks/fetchCart';
-import { useDispatch, useSelector } from 'react-redux';
+import { useFetchCart } from "../hooks/fetchCart";
+import { useDispatch, useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Header = ({ title }) => {
   const [auth, setAuth] = useState("");
-  const router = useRouter(); 
+  const [username, setUsername] = useState("")
+  const router = useRouter();
   useFetchCart();
-  useSelector(state => console.log(state));
-  const cartItems = useSelector (
-    (state) => state.cart.cart
-  )
-  const username = useSelector (
-    (state) => state.loginDetails.username
-  )
+  useSelector((state) => console.log(state));
+  const cartItems = useSelector((state) => state.cart.cart);
+  const usernamee = useSelector((state) => state.loginDetails.username);
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" || usernamee !== null) {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
+      window.localStorage.setItem("username", usernamee);
+      let username = window.localStorage.getItem("username");
+      setUsername(username);
     }
-  });
+  },[]);
 
   return (
     <>
