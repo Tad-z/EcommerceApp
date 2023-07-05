@@ -22,7 +22,7 @@ import { ColorRing } from "react-loader-spinner";
 
 export default function Home({ data, page }) {
   const [{ isLoading, serverError, apiData }] = useFetchProducts();
-  const products = useSelector (
+  const products = useSelector(
     (state) => state.products.queue
   )
   const [input, setInput] = useState("")
@@ -31,16 +31,18 @@ export default function Home({ data, page }) {
   useSelector(state => console.log(state));
   if (isLoading)
     return (
-      <div className="loader">
-        <ColorRing
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="blocks-loading"
-          wrapperStyle={{}}
-          wrapperClass="blocks-wrapper"
-          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-        />
+      <div className="loader-container">
+        <div>
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+          />
+        </div>
       </div>
     );
 
@@ -48,10 +50,10 @@ export default function Home({ data, page }) {
     return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
   // const { result = [] } = data || {};
   // const products = result.products;
-  
+
   return (
     <>
-      <Header title="Home Page"/>
+      <Header title="Home Page" />
       <Main>
         <h2 className="mt-12 text-xl font-semibold">Featured Products</h2>
         <div className="new">
@@ -75,4 +77,4 @@ export default function Home({ data, page }) {
       <Footer />
     </>
   )
- }
+}

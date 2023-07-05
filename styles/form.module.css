@@ -12,8 +12,8 @@
     width: 100vw;
     background: linear-gradient(
         135deg,
-        #3d1abd,
-        #3c2399
+        #fbbf24,
+        #e2ac20
     );
 }
 .container{
@@ -32,6 +32,7 @@
     font-size: 30px;
     text-align: center;
     color: #1c093c;
+    letter-spacing: -2px;
 }
 .p{
     position: relative;
@@ -51,7 +52,8 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    grid-gap: 20px 30px;
+    row-gap: 20px;
+    column-gap: 30px;
     margin-bottom: 20px;
 }
 .label{
@@ -78,11 +80,23 @@
     padding: 10px 20px;
     background: linear-gradient(
         130deg,
-        #3d1abd,
-        #3c2399
+        #977316,
+        #7e6012
     );
     color: #ffffff;
     border-radius: 5px;
+}
+.link {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #7e6012;
+}
+
+.link:hover,
+.link:active {
+    text-decoration: none;
+    font-weight: 400;
+    color: #0e0d0d;
 }
 
 .series {

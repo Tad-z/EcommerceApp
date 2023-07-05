@@ -1,13 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Rubik:ital,wght@0,400;0,500;0,700;1,600&display=swap');
+
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "inter", sans-serif;
 }
 a {
   color: inherit;
@@ -22,9 +23,6 @@ sup {
   border-radius: 100%;
 }
 
-* {
-  box-sizing: border-box;
-}
 .featured-products {
   display: flex;
   justify-content: center;
@@ -60,9 +58,11 @@ sup {
   }
 }
 
-
-.loader {
-  @apply w-full h-[300] m-auto flex justify-center items-center
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .new {
   @apply flex justify-start gap-5 relative h-96 w-full overflow-x-hidden overflow-y-hidden

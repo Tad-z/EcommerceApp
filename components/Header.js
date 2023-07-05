@@ -71,7 +71,7 @@ const Header = ({ title }) => {
             {auth == null && (
               <>
                 <Link href="/signup">
-                  <a className="p-2">Signup</a>
+                  <a className="p-2 bg-amber-500 rounded-sm hover:bg-amber-600">Signup</a>
                 </Link>
                 <Link href="/login">
                   <a className="p-2">Login</a>

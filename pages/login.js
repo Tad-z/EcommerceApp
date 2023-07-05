@@ -107,7 +107,7 @@ export default function LoginScreen() {
             </button>
           <div className="mb-2 mt-3">
             <p className="sm: text-sm">Don&apos;t have an account? &nbsp;
-            <Link href="signup">Create an account</Link></p>
+            <a className={styles.link} href="signup">Create an account</a></p>
           </div>
         </form>
       </div>
