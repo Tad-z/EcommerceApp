@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import ApiCall from "../pages/api/helper";
 import Head from "next/head";
+import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
 import { useFetchCart } from "../hooks/fetchCart";
 import { useDispatch, useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import logo from "../assets/logo2.jpg";
 
 const Header = ({ title }) => {
   const [auth, setAuth] = useState("");
@@ -25,7 +28,7 @@ const Header = ({ title }) => {
       let username = window.localStorage.getItem("username");
       setUsername(username);
     }
-  },[]);
+  }, []);
 
   return (
     <>
@@ -39,11 +42,22 @@ const Header = ({ title }) => {
 
       {/* min h screen sets the page to full height */}
       <header>
-        <nav className="flex mb-10 h-12 w-full items-center bg-slate-50 fixed px-4 justify-between shadow-md">
+        <nav className="flex mb-10 h-13 w-full items-center bg-[#f3f3eb] fixed px-5 justify-between shadow-md">
           <Link href="/">
-            <a className="text-lg font-bold">EcomerceApp</a>
+            <Image 
+              src={logo}
+              height={50}
+              width={150}
+            />
           </Link>
-          <div className="flex justify-center">
+
+          <div className="flex justify-center items-center gap-4">
+            <Link href="#">
+              <a className={styles.navLinks}>About Us</a>
+            </Link>
+            <Link href="#">
+              <a className={styles.navLinks}>Shop</a>
+            </Link>
             {auth == "true" && (
               <>
                 <a className="p-2">{`Hey ${username}`}</a>
@@ -70,11 +84,8 @@ const Header = ({ title }) => {
             )}
             {auth == null && (
               <>
-                <Link href="/signup">
-                  <a className="p-2 bg-amber-500 rounded-sm hover:bg-amber-600">Signup</a>
-                </Link>
                 <Link href="/login">
-                  <a className="p-2">Login</a>
+                  <a className={styles.navLinks}>Login</a>
                 </Link>
               </>
             )}

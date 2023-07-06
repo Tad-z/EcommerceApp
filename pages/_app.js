@@ -1,5 +1,5 @@
 // import { StoreProvider } from "../reducers/store";
-import "../styles/globals.css";
+import "../styles/globals.css"  
 import * as dotenv from "dotenv";
 dotenv.config();
 import React from "react";

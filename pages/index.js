@@ -4,6 +4,7 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import ProductItem from "../components/ProductItem";
 import Link from "next/link";
 import Header from "../components/Header";
+import Hero from "../components/Hero";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 
@@ -54,7 +55,9 @@ export default function Home({ data, page }) {
   return (
     <>
       <Header title="Home Page" />
+      <Hero />
       <Main>
+        
         <h2 className="mt-12 text-xl font-semibold">Featured Products</h2>
         <div className="new">
           <div className="featured-products track ">
