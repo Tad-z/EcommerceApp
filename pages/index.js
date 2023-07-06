@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
+import { AiOutlineSearch } from "react-icons/ai";
 
 
 
@@ -56,20 +57,20 @@ export default function Home({ data, page }) {
     <>
       <Header title="Home Page" />
       <Hero />
-      <Main>
-        
-        <h2 className="mt-12 text-xl font-semibold">Featured Products</h2>
-        <div className="new">
-          <div className="featured-products track ">
+      <Main>  
+        <h2 className="mb-8 mx-8 text-4xl font-semibold">Best Sellers</h2>
+        <div className={styles.new}>
+          <div className={`${styles.featuredProducts} ${styles.track}`}>
             {featuredProducts.map((product) => <FeaturedProducts product={product} key={product._id} />)}
           </div>
         </div>
-        <h2 className="text-2xl font-bold text-center">Our Products</h2>
-        <p className="text-center text-lg mb-4">We offer the best products at the best price</p>
-        <div className="form">
-          <input className="input" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Search for products" name='query' type='search' />
+        <h2 className="text-4xl mb-8 mx-8 font-bold">Our Products</h2>
+        {/* <p className=" text-lg mb-4">We offer the best products at the best price</p> */}
+        <div className={styles.form}>
+          <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)}  name='query' type='search' />
+          <AiOutlineSearch className={styles.search} />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {Products.map((product) => <ProductItem product={product} key={product._id} />)}
         </div>
         <div className="flex justify-center my-2">

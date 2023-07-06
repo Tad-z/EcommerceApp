@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { postServerData } from "../pages/api/helper";
 import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
+import styles from "../styles/Home.module.css";
 
 export default function ProductItem({ product }) {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function ProductItem({ product }) {
     }
   };
   return (
-    <div className="card">
+    <div className={styles.card}>
       <img
         className="image"
         alt={product.name}
@@ -46,14 +47,14 @@ export default function ProductItem({ product }) {
         <h2 className="text-lg text-left">{product.title}</h2>
         <h2 className="mb-5 text-left text-lg font-bold">N{product.price}</h2>
         <Link href={`/product/${product.slug}`}>
-          <button type="button" className="view-details-button">
+          <button type="button" className={styles.viewdetailsbutton}>
             View product details
           </button>
         </Link>
         <button
           type="button"
           onClick={addToCartHandler}
-          className="add-to-cart-button"
+          className={styles.addtocartbutton}
         >
           Add to cart
         </button>
