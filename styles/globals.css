@@ -32,11 +32,20 @@ sup {
   border-radius: 100%;
 }
 
+footer a:hover {
+  text-decoration: underline;
+}
+
 
 .logo {
   text-decoration: none;
 }
 
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
 
 
 
@@ -75,9 +84,7 @@ sup {
 .size-button {
   @apply border m-1 mb-4 border-blue-400 py-2 px-4 shadow outline-none;
 }
-.image {
-  @apply h-3/5 w-full rounded-lg object-cover bg-white;
-}
+
 .image-slide {
   @apply h-3/5 w-full rounded-lg object-cover bg-white;
 }

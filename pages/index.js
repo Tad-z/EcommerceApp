@@ -70,7 +70,7 @@ export default function Home({ data, page }) {
           <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)}  name='query' type='search' />
           <AiOutlineSearch className={styles.search} />
         </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {Products.map((product) => <ProductItem product={product} key={product._id} />)}
         </div>
         <div className="flex justify-center my-2">

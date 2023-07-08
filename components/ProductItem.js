@@ -39,7 +39,7 @@ export default function ProductItem({ product }) {
   return (
     <div className={styles.card}>
       <img
-        className="image"
+        className={styles.cardImage}
         alt={product.name}
         src={`http://localhost:4000/${product.productImage}`}
       />
