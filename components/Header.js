@@ -72,10 +72,11 @@ const Header = ({ title }) => {
                   </a>
                 </Link>
                 <a
+                  href = ""
                   className="p-2 cursor-pointer"
                   onClick={() => {
                     localStorage.clear();
-                    router.push("/");
+                    
                   }}
                 >
                   Logout

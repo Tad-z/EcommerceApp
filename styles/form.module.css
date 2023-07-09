@@ -11,8 +11,8 @@
     width: 100vw;
     background: linear-gradient(
         135deg,
-        #fbbf24,
-        #e2ac20
+        #f3f3eb,
+        #f7f7f1
     );
 }
 .container{
@@ -72,30 +72,41 @@
     margin-bottom: 4px;
 }
 
-.button{
+.button {
     border: none;
     width: 100%;
     margin-top: 1rem;
     padding: 10px 20px;
     background: linear-gradient(
         130deg,
-        #977316,
-        #7e6012
+        #9f7d4e,
+        #a98c61
     );
-    color: #ffffff;
+    color: #f7f7f1;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
 }
+.button:hover,
+.button:active {
+    background: linear-gradient(
+        130deg,
+        #856434,
+        #946F3A
+    );
+}
+
 .link {
     text-decoration: underline;
     font-weight: 600;
-    color: #7e6012;
+    color: #9f7d4e;
 }
 
 .link:hover,
 .link:active {
     text-decoration: none;
     font-weight: 400;
-    color: #0e0d0d;
+    color: #946F3A;
 }
 
 .series {
@@ -128,23 +139,6 @@
 .seriesButton:active {
     background: linear-gradient(
         120deg,
-        #313030,
-        #252525
-    );
-    transform: translateY(2px);
-}
-
-.button:hover{
-    background: linear-gradient(
-        130deg,
-        #353535,
-        #1b1b1b
-    );
-
-}
-.button:active{
-    background: linear-gradient(
-        130deg,
         #313030,
         #252525
     );

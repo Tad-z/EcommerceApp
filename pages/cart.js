@@ -10,6 +10,7 @@ import ApiCall from "./api/helper";
 import { useFetchCart } from "../hooks/fetchCart";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItemFromCart, updateCart } from "../reducers/cartReducer";
+import styles from "../styles/Home.module.css";
 
 export default function CartScreen() {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function CartScreen() {
     <>
       <Header title="Shopping Cart" />
       <Main>
-        <h1 className="mb-4 text-xl font-bold">Shopping Cart</h1>
+        <h1 className="my-7 text-xl font-bold">Shopping Cart</h1>
         {cartItems?.length === 0 ? (
           <div>
             Cart is empty. <Link href="/">Continue Shopping</Link>
@@ -109,7 +110,7 @@ export default function CartScreen() {
                   <li>
                     <button
                       onClick={() => router.push("/shipping")}
-                      className="add-to-cart-button w-full"
+                      className={styles.addtocartbutton}
                     >
                       Checkout
                     </button>
