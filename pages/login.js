@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,9 @@ import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import styles from "../styles/form.module.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import * as Action from "../reducers/loginReducer";
+
 
 export default function LoginScreen() {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ export default function LoginScreen() {
   const router = useRouter();
   const submitHandler = async ({ username, password }) => {
     console.log(username);
-    if(username){
+    if (username) {
       dispatch(Action.setUsername({ username }));
     }
     try {
@@ -53,6 +55,12 @@ export default function LoginScreen() {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className={styles.body}>
       <Header title="login" />
@@ -60,7 +68,7 @@ export default function LoginScreen() {
         <h1 className={styles.h1}>Login</h1>
         <p className={styles.p}>Sign-In Information</p>
         <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-          <div className={styles.column}> 
+          <div className={styles.column}>
             <label htmlFor="username" className={styles.label}>
               Username&nbsp;<span className="text-red-600">*</span>
             </label>
@@ -86,7 +94,7 @@ export default function LoginScreen() {
               Password &nbsp;<span className="text-red-600">*</span>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               {...register("password", {
                 required: "Please enter a strong password",
                 minLength: {
@@ -94,20 +102,23 @@ export default function LoginScreen() {
                   message: "Password should have minimum of 6 characters",
                 },
               })}
-              className={styles.input}
+              className={styles.pswInput}
               id="password"
               autoFocus
             />
+            <div className={styles.LogInputIcon} onClick={handleTogglePassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </div>
             {errors.password && (
               <div className="text-red-500">{errors.password.message}</div>
             )}
           </div>
-            <button type="submit" className={styles.button}>
-              Log In
-            </button>
+          <button type="submit" className={styles.button}>
+            Log In
+          </button>
           <div className="mb-2 mt-3">
             <p className="sm: text-sm">Don&apos;t have an account? &nbsp;
-            <a className={styles.link} href="signup">Create an account</a></p>
+              <a className={styles.link} href="signup">Create an account</a></p>
           </div>
         </form>
       </div>

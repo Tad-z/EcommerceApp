@@ -60,7 +60,7 @@
     font-size: 14px;
 }
 
-.input{
+.input {
     width: 100%;
     font-weight: 400;
     background-color: #ffffff;
@@ -71,6 +71,42 @@
     margin-top: 5px;
     margin-bottom: 4px;
 }
+
+.pswInput {
+    width: 100%;
+    position: relative;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #1a1a1b;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1.2px solid #c4cae0;
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+.SignInputIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 70%;
+    right: 10px;
+    color: #1a1a1b;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+.LogInputIcon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 51%;
+    right: 10px;
+    color: #1a1a1b;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
 
 .button {
     border: none;
