@@ -42,7 +42,7 @@ const Header = ({ title }) => {
 
       {/* min h screen sets the page to full height */}
       <header>
-        <nav className="flex py-1 h-13 w-full items-center bg-[#f3f3eb] fixed px-5 justify-between shadow-md">
+        <nav className="flex py-1 h-13 w-full items-center bg-[#f3f3eb] z-[9999] fixed px-5 justify-between shadow-md">
           <Link href="/">
             <Image 
               src={logo}
