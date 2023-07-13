@@ -34,7 +34,7 @@ const Header = ({ title }) => {
     <>
       <Head>
         <title>{title ? title + "-EcomerceApp" : "EcommerceApp"}</title>
-        <meta name="description" content="Ecommerce website" />
+        <meta name="description" content="Ecommerce website, sells clothes,shoes,jeans,hoodies" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
