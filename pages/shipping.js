@@ -21,7 +21,7 @@ export default function ShippingScreen() {
     getValues,
   } = useForm();
 
-  const data = useSelector((state) => state.cart.cart);
+  // const data = useSelector((state) => state.cart.cart);
   const submitHandler = async ({ fullname, city, adress }) => {
     try {
       const response = await postServerData(
