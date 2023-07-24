@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../reducers/error";
 import { getServerData, postServerData } from "./api/helper";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 
 
 export default function ShippingScreen() {
@@ -37,7 +38,7 @@ export default function ShippingScreen() {
       } else {
         toast.error("Something went wrong");
       }
-    } catch(err) {
+    } catch (err) {
       toast.error(getError(err));
       console.log(err.message);
     }
@@ -59,7 +60,7 @@ export default function ShippingScreen() {
               Full Name &nbsp;<span className="text-red-600">*</span>
             </label>
             <input
-              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-blue-300"
+              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-[#5e4c34]"
               id="fullname"
               autoFocus
               {...register("fullname", {
@@ -76,7 +77,7 @@ export default function ShippingScreen() {
               City &nbsp;<span className="text-red-600">*</span>
             </label>
             <input
-              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-blue-300"
+              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-[#5e4c34]"
               id="city"
               autoFocus
               {...register("city", {
@@ -93,7 +94,7 @@ export default function ShippingScreen() {
               Street Adress &nbsp;<span className="text-red-600">*</span>
             </label>
             <input
-              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-blue-300"
+              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-[#5e4c34]"
               id="adress"
               autoFocus
               {...register("adress", {
@@ -107,12 +108,15 @@ export default function ShippingScreen() {
             {errors.adress && (
               <div className="text-red-500">{errors.adress.message}</div>
             )}
+            <p className="text-gray-500 text-sm">*Detailed street adress will help us locate you easily</p>
           </div>
 
           <div className="mb-4">
-            <button type="submit" className="next-button">
-              Next
-            </button>
+            <Link href="order">
+              <button type="submit" className="next-button">
+                Next
+              </button>
+            </Link>
           </div>
         </form>
       </Main>

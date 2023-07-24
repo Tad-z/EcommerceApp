@@ -11,7 +11,7 @@ const Hero = () => {
             We are here to provide you with the best quality clothing at the
             best price
           </p>
-          <a href="" className={styles.btn}>Shop Now</a>
+          <a href="#products" className={styles.btn}>Shop Now</a>
         </div>
       </div>
     </header>

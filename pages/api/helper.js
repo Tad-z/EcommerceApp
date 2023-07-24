@@ -26,17 +26,17 @@ export async function postServerData(url, payload) {
   }
 }
 
-// export default class ApiCall {
-//   static async getMethod(url) {
-//     const response = await axios.get(url);
-//     if (response.status) {
-//       return response.data;
-//     }
+export default class ApiCall {
+  static async getMethod(url) {
+    const response = await axios.get(url);
+    if (response.status) {
+      return response.data;
+    }
 
-//     return null;
-//   }
+    return null;
+  }
 
-//   static async postMethod(url, payload) {
-//     return axios.post(url, payload);
-//   }
-// }
+  static async postMethod(url, payload) {
+    return axios.post(url, payload);
+  }
+}

@@ -31,7 +31,7 @@ const Header = ({ title }) => {
   }, []);
 
   return (
-    <>
+    <div>
       <Head>
         <title>{title ? title + "-EcomerceApp" : "EcommerceApp"}</title>
         <meta name="description" content="Ecommerce website, sells clothes,shoes,jeans,hoodies" />
@@ -52,9 +52,9 @@ const Header = ({ title }) => {
           </Link>
 
           <div className="flex justify-center items-center gap-4 ">
-            {/* <Link href="#">
+            <Link href="#">
               <a className={styles.navLinks}>About Us</a>
-            </Link> */}
+            </Link>
             <Link href="#products"  scroll={false}>
               <a className={styles.navLinks}>Shop</a>
             </Link>
@@ -93,7 +93,7 @@ const Header = ({ title }) => {
           </div>
         </nav>
       </header>
-    </>
+    </div>
   );
 };
 
