@@ -51,11 +51,11 @@ const Header = ({ title }) => {
             />
           </Link>
 
-          <div className="flex justify-center items-center gap-4">
-            <Link href="#">
+          <div className="flex justify-center items-center gap-4 ">
+            {/* <Link href="#">
               <a className={styles.navLinks}>About Us</a>
-            </Link>
-            <Link href="#">
+            </Link> */}
+            <Link href="#products"  scroll={false}>
               <a className={styles.navLinks}>Shop</a>
             </Link>
             {auth == "true" && (
@@ -72,7 +72,7 @@ const Header = ({ title }) => {
                   </a>
                 </Link>
                 <a
-                  href = ""
+                  href = "#"
                   className="p-2 cursor-pointer"
                   onClick={() => {
                     localStorage.clear();

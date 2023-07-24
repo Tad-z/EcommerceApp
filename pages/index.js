@@ -64,7 +64,7 @@ export default function Home({ data, page }) {
             {featuredProducts.map((product) => <FeaturedProducts product={product} key={product._id} />)}
           </div>
         </div>
-        <h2 className="text-4xl mb-8 mx-8 font-bold">Our Products</h2>
+        <h2 className="text-4xl mb-8 mx-8 font-bold" id="products">Our Products</h2>
         {/* <p className=" text-lg mb-4">We offer the best products at the best price</p> */}
         <div className={styles.form}>
           <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)}  name='query' type='search' />
