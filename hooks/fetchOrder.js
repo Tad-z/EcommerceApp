@@ -8,21 +8,21 @@ import * as Action from "../reducers/orderReducer";
 export const useFetchOrder = () => {
     const dispatch = useDispatch();
     const [getData, setGetData] = useState({
-        isLoading: false,
-        apiData: [],
-        serverError: null,
+        loading: false,
+        data: [],
+        error: null,
     });
     
     useEffect(() => {
-        setGetData((prev) => ({ ...prev, isLoading: true }));
+        setGetData((prev) => ({ ...prev, loading: true }));
 
         (async () => {
             const { data  } = await getServerData(`http://localhost:4000/orders/`);
             let order = data.order;
             try {
               if (order.length > 0) {
-                setGetData((prev) => ({ ...prev, isLoading: false }));
-                setGetData((prev) => ({ ...prev, apiData: { order } }));
+                setGetData((prev) => ({ ...prev, loading: false }));
+                setGetData((prev) => ({ ...prev, data: { order } }));
       
                 /** dispatch an action */
                 dispatch(Action.setOrder({ order }));
@@ -30,8 +30,8 @@ export const useFetchOrder = () => {
                 throw new Error("No Order Avalibale");
               }
             } catch (error) {
-              setGetData((prev) => ({ ...prev, isLoading: false }));
-              setGetData((prev) => ({ ...prev, serverError: error }));
+              setGetData((prev) => ({ ...prev, loading: false }));
+              setGetData((prev) => ({ ...prev, error: error }));
             }
         })();
     }, [dispatch]);

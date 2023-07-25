@@ -9,9 +9,12 @@ import { getError } from "../reducers/error";
 import { getServerData, postServerData } from "./api/helper";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 
 
 export default function ShippingScreen() {
+  
 
   const {
     handleSubmit,
@@ -21,21 +24,25 @@ export default function ShippingScreen() {
     getValues,
   } = useForm();
 
-  // const data = useSelector((state) => state.cart.cart);
-  const submitHandler = async ({ fullname, city, adress }) => {
+  const router = useRouter();
+  // let data = useSelector((state) => state.cart.cart); 
+  const submitHandler = async ({ fullname, phoneNumber, city, adress }) => {
     try {
       const response = await postServerData(
         "http://localhost:4000/orders",
         {
           fullname,
+          phoneNumber,
           city,
-          adress,
-          data
+          adress,  
         }
       );
       if (response) {
+        console.log("response");
         toast("Order Saved");
+        router.push("/order");
       } else {
+        console.log("error");
         toast.error("Something went wrong");
       }
     } catch (err) {
@@ -69,6 +76,23 @@ export default function ShippingScreen() {
             />
             {errors.fullname && (
               <div className="text-red-500">{errors.fullname.message}</div>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label className="font-bold mb-2 text-sm" htmlFor="phoneNumber">
+              Phone Number &nbsp;<span className="text-red-600">*</span>
+            </label>
+            <input
+              className="w-full rounded mb-4 shadow-sm bg-[#F2F2F2] py-2 px-4  outline-[#5e4c34]"
+              id="phoneNumber"
+              autoFocus
+              {...register("phoneNumber", {
+                required: "Please enter your phone Number",
+              })}
+            />
+            {errors.phoneNumber && (
+              <div className="text-red-500">{errors.phoneNumber.message}</div>
             )}
           </div>
 
@@ -112,11 +136,11 @@ export default function ShippingScreen() {
           </div>
 
           <div className="mb-4">
-            <Link href="order">
+            {/* <Link href="order"> */}
               <button type="submit" className="next-button">
                 Next
               </button>
-            </Link>
+            {/* </Link> */}
           </div>
         </form>
       </Main>

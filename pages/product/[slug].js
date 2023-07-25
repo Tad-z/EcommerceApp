@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import ApiCall, { postServerData } from '../api/helper';
 import { getError } from '../../reducers/error';
-
+import styles from '../../styles/Home.module.css'
 
 export async function getServerSideProps() {
   const defaultEndpoint = `http://localhost:4000/products/`
@@ -65,11 +65,11 @@ export default function ProductScreen({ data }) {
     <>
       <Header title={product?.name} />
       <Main>
-        <div className='py-2 mt-8'>
+        {/* <div className='py-2 mt-8'>
           <Link href="/"><button className='back-to-products-button text-white'>Back to products</button></Link>
-        </div>
-        <div className='grid md:grid-cols-4  my-5 md:gap-3'>
-          <div className='md:col-span-2'>
+        </div> */}
+        <div className='grid md:grid-cols-4 mt-10  mb-5 md:gap-3'>
+          <div className='md:col-span-2 mt-8'>
             <Image
               loader={() => src}
               src={src}
@@ -119,7 +119,7 @@ export default function ProductScreen({ data }) {
               </li>
               <br />
               <li>
-                <button type="button" className='add-to-cart-button' onClick={addToCartHandler}>Add to Cart</button>
+                <button type="button" className={styles.addtocartbutton} onClick={addToCartHandler}>Add to Cart</button>
               </li>
             </ul>
           </div>

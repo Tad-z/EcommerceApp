@@ -3,7 +3,7 @@ import React from "react";
 export default function CheckoutWizard({ activeStep = 0 }) {
   return (
     <div className="mt-20 mb-5 flex flex-wrap">
-      {["1.User Login", "2.Shipping Adress", "3.Order"].map(
+      {["1.User Login", "2.Shipping Adress", "3.Review & Order"].map(
         (step, index) => (
           <div
             key={step}

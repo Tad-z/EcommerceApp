@@ -19,6 +19,9 @@ const Header = ({ title }) => {
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
   const usernamee = useSelector((state) => state.loginDetails.username);
+  const forceRefresh = () => {
+    window.location.reload(true);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined" || usernamee !== null) {
@@ -72,11 +75,11 @@ const Header = ({ title }) => {
                   </a>
                 </Link>
                 <a
-                  href = "#"
+                  href="/"
                   className="p-2 cursor-pointer"
                   onClick={() => {
-                    localStorage.clear();
-                    
+                    localStorage.clear(); 
+                    forceRefresh()
                   }}
                 >
                   Logout
