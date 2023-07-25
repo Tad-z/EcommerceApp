@@ -14,11 +14,20 @@ export default function order() {
     const [{ loading, data, error }] = useFetchOrder();
     const [{ isLoading, serverError, apiData }] = useFetchCart();
     const orders = useSelector((state) => state.order.queue);
-    const cart = useSelector((state) => state.cart.cart);
-    const order = orders[orders.length - 1];
-    let [fullname, city, adress, email] = ""
+    const cartItems = useSelector((state) => state.cart.cart);
+    console.log("q",cartItems.product)
+    // if (cartItems && cartItems.quantity) {
+    //     quantity = cartItems.quantity
+    //     console.log("q",quantity)
+    // }
+    // const order = orders[orders.length - 1];
+    let [fullname, phoneNumber, city, adress, email] = ""
     if (order && order.fullname) {
         fullname = order.fullname
+    }
+
+    if (order && order.phoneNumber) {
+        phoneNumber = order.phoneNumber
     }
 
     if (order && order.city) {
@@ -41,17 +50,21 @@ export default function order() {
                     <CheckoutWizard activeStep={2} />
                 </div>
                 <div className='grid grid-cols-2 mt-5'>
-                    <div className=' bg-[#f3f3eb] text-gray-600 m-8 p-8'>
-                        <div className='flex flex-col items-start gap-5'>
-                            <div className='flex gap-10'>
+                    <div className=' bg-white shadow-sm rounded-lg text-gray-600 m-8 p-8'>
+                        <div className='flex flex-col items-start gap-6'>
+                            <div className='flex gap-10 pb-5 border-b w-full'>
                                 <p>Email</p>
                                 <p>{email}</p>
                             </div>
-                            <div className='flex gap-10'>
+                            <div className='flex gap-10 pb-5 border-b w-full'>
+                                <p>Phone Number</p>
+                                <p>0{phoneNumber}</p>
+                            </div>
+                            <div className='flex gap-10 pb-5 border-b w-full'>
                                 <p>Name</p>
                                 <p>{fullname}</p>
                             </div>
-                            <div className='flex gap-10'>
+                            <div className='flex gap-10 pb-5 border-b w-full'>
                                 <p>City</p>
                                 <p>{city}</p>
                             </div>
@@ -61,7 +74,14 @@ export default function order() {
                             </div>
                         </div>
                     </div>
-                    <div>section 2</div>
+                    <div> 
+                        {cartItems.map((item) => {
+                            <div>
+                                <img src={item.product.productImage} />
+                            </div>
+                            
+                        })}
+                    </div>
                 </div>
                 <div className='w-full flex justify-center'>
                     <button className={styles.loginButton}>
