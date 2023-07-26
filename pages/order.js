@@ -6,6 +6,8 @@ import styles from '../styles/Home.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFetchOrder } from '../hooks/fetchOrder'
 import { useFetchCart } from '../hooks/fetchCart'
+import CartOrder from "../components/CartOrder";
+import Link from 'next/link'
 
 
 
@@ -14,13 +16,14 @@ export default function order() {
     const [{ loading, data, error }] = useFetchOrder();
     const [{ isLoading, serverError, apiData }] = useFetchCart();
     const orders = useSelector((state) => state.order.queue);
-    const cartItems = useSelector((state) => state.cart.cart);
-    console.log("q",cartItems.product)
-    // if (cartItems && cartItems.quantity) {
-    //     quantity = cartItems.quantity
-    //     console.log("q",quantity)
-    // }
-    // const order = orders[orders.length - 1];
+    const cart = useSelector((state) => state.cart.cart);
+    let total = useSelector((state) => state.cart.price);
+    //    const cartItems = cart.map((item) => {
+    //     return item.CartId
+    //    })
+    //    console.log("c", cartItems);
+
+    const order = orders[orders.length - 1];
     let [fullname, phoneNumber, city, adress, email] = ""
     if (order && order.fullname) {
         fullname = order.fullname
@@ -41,7 +44,7 @@ export default function order() {
     if (order && order.user) {
         email = order.user.email
     }
-    console.log(email)
+    // console.log(email)
     return (
         <>
             <Header title="Review Order" />
@@ -74,19 +77,31 @@ export default function order() {
                             </div>
                         </div>
                     </div>
-                    <div> 
-                        {cartItems.map((item) => {
-                            <div>
-                                <img src={item.product.productImage} />
-                            </div>
-                            
-                        })}
+                    <div className='mt-5'>
+                        {cart?.map((item) => (
+                            <>
+                                <CartOrder
+                                    key={item.slug}
+                                    item={item}
+                                />
+                            </>
+                        ))}
+                        <div className='p-8 border-t flex justify-between'>
+                            <p className='text-lg'>Order Total</p>
+                            <p className='text-lg text-[#946F3A]'>N{total}</p>
+                        </div>
                     </div>
+
                 </div>
                 <div className='w-full flex justify-center'>
                     <button className={styles.loginButton}>
                         Complete Order
                     </button>
+                </div>
+                <div className='text-center border-t my-10 py-10 hover:text-[#946F3A]'>
+                    <Link href='/shipping'>
+                        Return to Shipping
+                    </Link>
                 </div>
             </Main>
         </>

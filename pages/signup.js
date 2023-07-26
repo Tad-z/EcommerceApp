@@ -29,10 +29,12 @@ export default function SignupScreen() {
         }
       );
       if (result) {
+        toast("You have signed up");
         console.log("success");
       } else {
         console.log("error1");
       }
+      router.push('/login')
     } catch (err) {
       toast.error(getError(err));
       console.log("error2");
