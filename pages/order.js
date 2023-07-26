@@ -52,32 +52,36 @@ export default function order() {
                 <div className="mt-10">
                     <CheckoutWizard activeStep={2} />
                 </div>
-                <div className='grid grid-cols-2 mt-5'>
-                    <div className=' bg-white shadow-sm rounded-lg text-gray-600 m-8 p-8'>
+                <div className='grid grid-cols-2 my-5 text-gray-600 gap-6'>
+                    <div className=' bg-white shadow-sm self-center rounded-lg  p-8'>
                         <div className='flex flex-col items-start gap-6'>
-                            <div className='flex gap-10 pb-5 border-b w-full'>
+                            <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>Email</p>
                                 <p>{email}</p>
                             </div>
-                            <div className='flex gap-10 pb-5 border-b w-full'>
+                            <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>Phone Number</p>
                                 <p>0{phoneNumber}</p>
                             </div>
-                            <div className='flex gap-10 pb-5 border-b w-full'>
+                            <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>Name</p>
                                 <p>{fullname}</p>
                             </div>
-                            <div className='flex gap-10 pb-5 border-b w-full'>
+                            <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>City</p>
                                 <p>{city}</p>
                             </div>
-                            <div className='flex gap-10'>
+                            <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>Adress</p>
                                 <p>{adress}</p>
                             </div>
+                            <div className='flex justify-between px-5 w-full'>
+                                <p>Shipping Method</p>
+                                <p className='text-[#946F3A]'>Cash On Delivery</p>
+                            </div>
                         </div>
                     </div>
-                    <div className='mt-5'>
+                    <div className='mt-5 self-start'>
                         {cart?.map((item) => (
                             <>
                                 <CartOrder
@@ -93,12 +97,12 @@ export default function order() {
                     </div>
 
                 </div>
-                <div className='w-full flex justify-center'>
+                <div className='w-full flex justify-center border-t p-10'>
                     <button className={styles.loginButton}>
                         Complete Order
                     </button>
                 </div>
-                <div className='text-center border-t my-10 py-10 hover:text-[#946F3A]'>
+                <div className='text-center border-t my-5 py-5 hover:text-[#946F3A]'>
                     <Link href='/shipping'>
                         Return to Shipping
                     </Link>

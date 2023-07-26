@@ -70,7 +70,7 @@ footer a:hover {
   @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500
 }
 .default-button {
-  @apply rounded bg-gray-100 py-2 px-4 text-black shadow outline-none hover:bg-gray-200 active:bg-gray-300
+  @apply rounded bg-gray-100 py-2 px-4 text-gray-600  shadow outline-none hover:bg-gray-200 active:bg-gray-300
 } 
 .update-products-button {
   @apply rounded-md w-20 m-auto border mb-1 border-blue-400 p-2 shadow outline-none hover:bg-blue-300;
