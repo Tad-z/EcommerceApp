@@ -11,11 +11,11 @@ const CardOrder = ({ item, total }) => {
             <div className="border-t flex gap-5 p-8">
                 <div>
                     <Link href={`/product/${item.product.slug}`}>
-                        <a className='flex items-center'>
+                        <div className='flex items-center'>
                             <img src={`http://localhost:4000/${item.product.productImage}`} alt={item.title} width={150} height={150}></img>
                             &nbsp;
 
-                        </a>
+                        </div>
                     </Link>
                 </div>
                 <div>

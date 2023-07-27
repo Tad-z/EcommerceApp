@@ -24,7 +24,7 @@ export default function ProductItem({ product }) {
           if (result) {
             toast("You have added to cart successfully");
             console.log("success");
-            router.push("/cart");
+            // router.push("/cart");
           } else {
             toast.error("Something went wrong");
             console.log("error1");

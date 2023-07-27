@@ -64,17 +64,17 @@ export default function Footer() {
           <ul className='flex flex-col gap-3'>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>About Us</a>
+                <p className='text-[#767676] text-base'>About Us</p>
               </Link>
             </li>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>Shop</a>
+                <p className='text-[#767676] text-base'>Shop</p>
               </Link>
             </li>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>Career</a>
+                <p className='text-[#767676] text-base'>Career</p>
               </Link>
             </li>
           </ul>
@@ -85,17 +85,17 @@ export default function Footer() {
           <ul className='flex flex-col gap-3'>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>FAQ</a>
+                <p className='text-[#767676] text-base'>FAQ</p>
               </Link>
             </li>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>Shipping Information</a>
+                <p className='text-[#767676] text-base'>Shipping Information</p>
               </Link>
             </li>
             <li>
               <Link href="#">
-                <a className='text-[#767676] text-base'>Return Policy</a>
+                <p className='text-[#767676] text-base'>Return Policy</p>
               </Link>
             </li>
           </ul>

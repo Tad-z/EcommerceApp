@@ -24,6 +24,7 @@ const Header = ({ title }) => {
   };
 
   useEffect(() => {
+    
     if (typeof window !== "undefined" || usernamee !== null) {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
@@ -31,6 +32,7 @@ const Header = ({ title }) => {
       let username = window.localStorage.getItem("username");
       setUsername(username);
     }
+  
   }, []);
 
   return (
@@ -54,25 +56,22 @@ const Header = ({ title }) => {
             />
           </Link>
 
-          <div className="flex justify-center items-center gap-4 ">
-            <Link href="#">
-              <a className={styles.navLinks}>About Us</a>
-            </Link>
+          <div className="flex justify-center items-center gap-8 ">
             <Link href="#products"  scroll={false}>
-              <a className={styles.navLinks}>Shop</a>
+              <p className={styles.navLinks}>Shop</p>
             </Link>
             {auth == "true" && (
               <>
                 <a className="p-2">{`Hey ${username}`}</a>
                 <Link href="/cart">
-                  <a className="p-2 ">
+                  <p className="p-2 ">
                     Cart
                     {cartItems.length > 0 && (
                       <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
                         {cartItems.length}
                       </span>
                     )}
-                  </a>
+                  </p>
                 </Link>
                 <a
                   href="/"
@@ -89,7 +88,7 @@ const Header = ({ title }) => {
             {auth == null && (
               <>
                 <Link href="/login">
-                  <a className={styles.loginButton}>Login</a>
+                  <p className={styles.loginButton}>Login</p>
                 </Link>
               </>
             )}

@@ -25,6 +25,18 @@ export async function postServerData(url, payload) {
     return data;
   }
 }
+const reqInstance = axios.create();
+
+// Add an interceptor to include the token in the headers for each request
+reqInstance.interceptors.request.use((config) => {
+  if (typeof window !== "undefined") {
+    let token = window.localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
 
 export default class ApiCall {
   static async getMethod(url) {
@@ -40,3 +52,4 @@ export default class ApiCall {
     return axios.post(url, payload);
   }
 }
+
