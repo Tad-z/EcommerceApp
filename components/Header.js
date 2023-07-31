@@ -62,9 +62,9 @@ const Header = ({ title }) => {
             </Link>
             {auth == "true" && (
               <>
-                <a className="p-2">{`Hey ${username}`}</a>
+                <a className={styles.navLinks}>{`Hey ${username}`}</a>
                 <Link href="/cart">
-                  <p className="p-2 ">
+                  <p className={styles.navLinks}>
                     Cart
                     {cartItems.length > 0 && (
                       <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
@@ -75,7 +75,7 @@ const Header = ({ title }) => {
                 </Link>
                 <a
                   href="/"
-                  className="p-2 cursor-pointer"
+                  className={styles.navLinks}
                   onClick={() => {
                     localStorage.clear(); 
                     forceRefresh()

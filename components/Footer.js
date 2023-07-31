@@ -10,10 +10,10 @@ import styles from '../styles/Home.module.css'
 
 export default function Footer() {
   return (
-    <footer className=' py-32 mt-[32px] px-8 border-t-[1px] max-w-[1300px]   border-[#eee] bg-white'>
-      <div className=' my-0 mx-auto grid grid-cols-4 justify-center items-start gap-11'>
+    <footer className=' py-24 mt-[32px] px-8 border-t-[1px]   border-[#eee] bg-white'>
+      <div className=' my-0 mx-auto grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-start '>
         <div className='flex flex-col text-xs justify-center text-gray-800'>
-          <a href="#" className="block mb-3 ">
+          <a href="#" className="block mb-3">
             <Image
               src={logo}
               alt="logo"
@@ -63,43 +63,15 @@ export default function Footer() {
           <p className={styles.footerHeading}>Quick Links</p>
           <ul className='flex flex-col gap-3'>
             <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>About Us</p>
+              <Link href="#products">
+                <p className='text-[#767676] cursor-pointer hover:underline text-base'>Shop</p>
               </Link>
             </li>
-            <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>Shop</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>Career</p>
-              </Link>
-            </li>
+            
           </ul>
         </div>
 
-        <div>
-          <p className={styles.footerHeading}>Help</p>
-          <ul className='flex flex-col gap-3'>
-            <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>FAQ</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>Shipping Information</p>
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <p className='text-[#767676] text-base'>Return Policy</p>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        
 
       </div>
       <p className='text-center mt-10 text-sm'>Copyright @ 2022 EcomerceApp</p>

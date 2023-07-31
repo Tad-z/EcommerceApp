@@ -32,6 +32,7 @@
   background-image: linear-gradient(rgba(62, 59, 59, 0.2),
       rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
   background-size: cover;
+  max-width: 100%;
   background-repeat: no-repeat;
   color: #f7f7f1;
   margin-bottom: 96px;
@@ -40,6 +41,7 @@
 .headerContainer {
   height: 100%;
   display: flex;
+  max-width: 100%;
   /* flex-direction: column; */
   justify-content: start;
   align-items: end;
@@ -133,7 +135,7 @@
   white-space: nowrap;
   will-change: transform;
   animation: marquee 30s linear infinite;
-  width: 50%;
+  width: 100%;
 }
 
 .track:hover {
@@ -142,16 +144,17 @@
 
 @keyframes marquee {
   from {
-    transform: translate(15%);
+    transform: translate(0%);
   }
 
   to {
-    transform: translate(85%);
+    transform: translate(100%);
   }
 }
 
 .card {
   margin-bottom: 8px;
+  height: 100%;
   display: block;
   border-radius: 8px;
   border: none;
@@ -286,6 +289,13 @@
     width: 100%;
     flex-direction: column;
   }
+  .input {
+    width:100%;
+  }
+  .search{
+    left: 83%;
+  }
+
 }
 
 @media (prefers-color-scheme: dark) {
