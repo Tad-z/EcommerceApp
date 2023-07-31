@@ -30,7 +30,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
                     </div>
                 </Link>
             </td>
-            <td className='p-5 text-center'>N{item.product.price}</td>
+            <td className='p-5 text-lg text-center'>N{item.product.price}</td>
             <td className='p-5 text-center flex justify-end items-center'>
                 <button onClick={() => decrementCount()}>
                     <AiOutlineMinusSquare className='h-7 w-7 mx-1 text-center' />
