@@ -94,8 +94,8 @@ const Header = ({ title }) => {
                       )}
                     </p>
                   </Link>
-                  <Link href="/">
-                    <a
+                  <Link href="/index">
+                    <a       
                       className={styles.navLinks}
                       onClick={() => {
                         localStorage.clear();
