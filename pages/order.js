@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 
 
-export default function order() {
+export default function Order() {
     useDispatch();
     useFetchOrder();
     useFetchCart();
