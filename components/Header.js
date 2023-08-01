@@ -37,6 +37,7 @@ const Header = ({ title }) => {
       let username = window.localStorage.getItem("username");
       setUsername(username);
     }
+
     const handleScroll = () => {
       let y = window.scrollY;
       console.log("scroll", y);
@@ -53,7 +54,7 @@ const Header = ({ title }) => {
       window.removeEventListener("scroll", handleScroll);
     };
 
-  }, [y, usernamee]);
+  }, [usernamee]);
 
   return (
     <div>
