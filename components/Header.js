@@ -5,6 +5,8 @@ import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
 import { useFetchCart } from "../hooks/fetchCart";
 import { useDispatch, useSelector } from "react-redux";
+import { GiHamburgerMenu } from "react-icons/gi"
+import { GrClose } from "react-icons/gr"
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,6 +16,12 @@ import logo from "../assets/logo2.jpg";
 const Header = ({ title }) => {
   const [auth, setAuth] = useState("");
   const [username, setUsername] = useState("")
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const toggleMobileNav = () => {
+    setMobileNavOpen((prevState) => !prevState);
+  };
+  const [isFixed, setIsFixed] = useState(false);
+
   const router = useRouter();
   useFetchCart();
   useSelector((state) => console.log(state));
@@ -24,7 +32,7 @@ const Header = ({ title }) => {
   };
 
   useEffect(() => {
-    
+
     if (typeof window !== "undefined" || usernamee !== null) {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
@@ -32,7 +40,21 @@ const Header = ({ title }) => {
       let username = window.localStorage.getItem("username");
       setUsername(username);
     }
-  
+    const handleScroll = () => {
+      console.log("scroll", window.scrollY);
+      if (window.scrollY > visualViewport.height) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
   }, []);
 
   return (
@@ -46,54 +68,65 @@ const Header = ({ title }) => {
       <ToastContainer position="bottom-center" limit={1} autoClose={3000} />
 
       {/* min h screen sets the page to full height */}
-      <header>
-        <nav className="flex py-1 h-14 w-full items-center bg-[#f3f3eb] z-[9999] fixed top-0 px-5 justify-between shadow-md">
-          <Link href="/">
-            <Image 
-              src={logo}
-              height={50}
-              width={150}
-            />
-          </Link>
-
-          <div className="flex justify-center items-center gap-8 ">
-            <Link href="#products"  scroll={false}>
-              <p className={styles.navLinks}>Shop</p>
-            </Link>
-            {auth == "true" && (
-              <>
-                <a className={styles.navLinks}>{`Hey ${username}`}</a>
-                <Link href="/cart">
-                  <p className={styles.navLinks}>
-                    Cart
-                    {cartItems.length > 0 && (
-                      <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
-                        {cartItems.length}
-                      </span>
-                    )}
-                  </p>
-                </Link>
-                <a
-                  href="/"
-                  className={styles.navLinks}
-                  onClick={() => {
-                    localStorage.clear(); 
-                    forceRefresh()
-                  }}
-                >
-                  Logout
-                </a>
-              </>
-            )}
-            {auth == null && (
-              <>
-                <Link href="/login">
-                  <p className={styles.loginButton}>Login</p>
-                </Link>
-              </>
-            )}
+      <header className={`header ${isFixed ? "fixed" : ""}`}>
+        <Link href="/">
+          <Image
+            src={logo}
+            height={50}
+            width={150}
+          />
+        </Link>
+        <nav className={`main-nav ${mobileNavOpen ? "active" : ""}`}>
+          <div className="flex justify-center items-center gap-8 flex-col lg:flex-row">
+            <div className="mobile-nav-links">
+              <Link href="#products" scroll={false}>
+                <p className={styles.navLinks}>Shop</p>
+              </Link>
+              {auth == "true" && (
+                <>
+                  <a className={styles.navLinks}>{`Hey ${username}`}</a>
+                  <Link href="/cart">
+                    <p className={styles.navLinks}>
+                      Cart
+                      {cartItems.length > 0 && (
+                        <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
+                          {cartItems.length}
+                        </span>
+                      )}
+                    </p>
+                  </Link>
+                  <a
+                    href="/"
+                    className={styles.navLinks}
+                    onClick={() => {
+                      localStorage.clear();
+                      forceRefresh()
+                    }}
+                  >
+                    Logout
+                  </a>
+                </>
+              )}
+              {auth == null && (
+                <>
+                  <Link href="/login">
+                    <p className={styles.loginButton}>Login</p>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </nav>
+        <button className="btn-mobile-nav" onClick={toggleMobileNav}>
+          <GiHamburgerMenu
+            className={`icon-mobile-nav ${mobileNavOpen ? "hidden" : ""}`}
+            name="menu-outline"
+          />
+          <GrClose
+            className={`icon-mobile-nav ${mobileNavOpen ? "" : "hidden"}`}
+            name="close-ouline"
+          />
+        </button>
       </header>
     </div>
   );

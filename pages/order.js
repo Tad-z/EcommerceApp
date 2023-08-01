@@ -100,7 +100,7 @@ export default function order() {
                 </div>
                 <div className='w-full flex justify-center border-t p-10'>
                     <button className={styles.loginButton}>
-                        Complete Order
+                        <a href='/thankyou'>Complete Order</a>
                     </button>
                 </div>
                 <div className='text-center border-t my-5 py-5 hover:text-[#946F3A]'>
