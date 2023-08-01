@@ -38,9 +38,9 @@ const Header = ({ title }) => {
       setUsername(username);
     }
     const handleScroll = () => {
-      let scrollY = window.scrollY;
-      console.log("scroll", scrollY);
-      if (scrollY > visualViewport.height) {
+      let y = window.scrollY;
+      console.log("scroll", y);
+      if (y > visualViewport.height) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -53,7 +53,7 @@ const Header = ({ title }) => {
       window.removeEventListener("scroll", handleScroll);
     };
 
-  }, [scrollY, usernamee]);
+  }, [y, usernamee]);
 
   return (
     <div>
