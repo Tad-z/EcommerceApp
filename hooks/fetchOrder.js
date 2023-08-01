@@ -17,7 +17,7 @@ export const useFetchOrder = () => {
         setGetData((prev) => ({ ...prev, loading: true }));
 
         (async () => {
-            const { data  } = await getServerData(`http://localhost:4000/orders/`);
+            const { data  } = await getServerData(`https://emaxapi.onrender.com/orders`);
             let order = data.order;
             try {
               if (order.length > 0) {

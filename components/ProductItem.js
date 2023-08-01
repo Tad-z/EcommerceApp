@@ -18,7 +18,7 @@ export default function ProductItem({ product }) {
         try {
           const post = { productId: product._id };
           const result = await postServerData(
-            `http://localhost:4000/cart/`,
+            `https://emaxapi.onrender.com/cart`,
             post
           );
           if (result) {
@@ -41,7 +41,7 @@ export default function ProductItem({ product }) {
       <img
         className={styles.cardImage}
         alt={product.name}
-        src={`http://localhost:4000/${product.productImage}`}
+        src={`https://emaxapi.onrender.com/${product.productImage}`}
       />
       <div className="flex flex-col justify-center p-5">
         <h2 className="text-lg text-left">{product.title}</h2>

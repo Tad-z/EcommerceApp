@@ -44,7 +44,7 @@ export default function CartScreen() {
   const removeItemHandler = async (item) => {
     const productId = item.CartId;
     dispatch(removeItemFromCart({ productId }));
-    await axios.delete(`http://localhost:4000/cart/${productId}`);
+    await axios.delete(`https://emaxapi.onrender.com/cart/${productId}`);
   };
 
   const updateProducts = async (item) => {
@@ -55,7 +55,7 @@ export default function CartScreen() {
     const quantity = item.quantity;
     dispatch(updateCart({ productId, quantity }));
     console.log("q", quantity);
-    await axios.patch(`http://localhost:4000/cart/${productId}`, post);
+    await axios.patch(`https://emaxapi.onrender.com/cart/${productId}`, post);
   };
 
   return (

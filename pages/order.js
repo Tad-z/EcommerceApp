@@ -53,7 +53,7 @@ export default function order() {
                 <div className="mt-10 container mx-auto my-9 px-4">
                     <CheckoutWizard activeStep={2} />
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-2 text-gray-600 gap-6'>
+                <div className='grid lg:p-10 md:p-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-2 text-gray-600 gap-6'>
                     <div className=' bg-white shadow-sm self-center rounded-lg  p-8'>
                         <div className='flex flex-col items-start gap-6'>
                             <div className='flex justify-between px-5 pb-5 border-b w-full'>

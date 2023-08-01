@@ -30,7 +30,7 @@ export default function LoginScreen() {
     }
     try {
       const response = await ApiCall.postMethod(
-        "http://localhost:4000/user/login",
+        "https://emaxapi.onrender.com/user/login",
         {
           username,
           password,

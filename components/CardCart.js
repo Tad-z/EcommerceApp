@@ -24,7 +24,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
             <td>
                 <Link href={`/product/${item.product.slug}`}>
                     <div className='flex items-center'>
-                        <img src={`http://localhost:4000/${item.product.productImage}`} alt={item.title} width={60} height={60}></img>
+                        <img src={`https://emaxapi.onrender.com/${item.product.productImage}`} alt={item.title} width={60} height={60}></img>
                         &nbsp;
                         {item.product.title}
                     </div>

@@ -21,7 +21,7 @@ export default function SignupScreen() {
   const submitHandler = async ({ email, username, password }) => {
     try {
       const result = await ApiCall.postMethod(
-        "http://localhost:4000/user/signup",
+        "https://emaxapi.onrender.com/user/signup",
         {
           username,
           email,

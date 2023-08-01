@@ -12,7 +12,7 @@ const CardOrder = ({ item, total }) => {
                 <div>
                     <Link href={`/product/${item.product.slug}`}>
                         <div className='flex items-center'>
-                            <img src={`http://localhost:4000/${item.product.productImage}`} alt={item.title} width={150} height={150}></img>
+                            <img src={`https://emaxapi.onrender.com/${item.product.productImage}`} alt={item.title} width={150} height={150}></img>
                             &nbsp;
 
                         </div>

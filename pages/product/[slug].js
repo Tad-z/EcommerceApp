@@ -12,7 +12,7 @@ import { getError } from '../../reducers/error';
 import styles from '../../styles/Home.module.css'
 
 export async function getServerSideProps() {
-  const defaultEndpoint = `http://localhost:4000/products/`
+  const defaultEndpoint = `https://emaxapi.onrender.com/products`
   const res = await fetch(defaultEndpoint);
   const data = await res.json();
   return { props: { data } }
@@ -28,7 +28,7 @@ export default function ProductScreen({ data }) {
   }
   const product = products?.find((x) => x.slug === slug)
 
-  const src = `http://localhost:4000/${product.productImage}`
+  const src = `https://emaxapi.onrender.com/${product.productImage}`
   if (!product) {
     return (
       <div>Page not found</div>
@@ -43,7 +43,7 @@ export default function ProductScreen({ data }) {
         try {
           const post = { productId: product._id };
           const result = await postServerData(
-            `http://localhost:4000/cart/`,
+            `https://emaxapi.onrender.com/order`,
             post
           );
           if (result) {
