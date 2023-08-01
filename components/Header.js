@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import ApiCall from "../pages/api/helper";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
@@ -21,7 +20,6 @@ const Header = ({ title }) => {
   };
   const [isFixed, setIsFixed] = useState(false);
 
-  const router = useRouter();
   useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
@@ -40,8 +38,9 @@ const Header = ({ title }) => {
       setUsername(username);
     }
     const handleScroll = () => {
-      console.log("scroll", window.scrollY);
-      if (window.scrollY > visualViewport.height) {
+      let scrollY = window.scrollY;
+      console.log("scroll", scrollY);
+      if (scrollY > visualViewport.height) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -54,7 +53,7 @@ const Header = ({ title }) => {
       window.removeEventListener("scroll", handleScroll);
     };
 
-  }, []);
+  }, [scrollY, usernamee]);
 
   return (
     <div>
@@ -73,6 +72,7 @@ const Header = ({ title }) => {
             src={logo}
             height={50}
             width={150}
+            alt="logo"
           />
         </Link>
         <nav className={`main-nav ${mobileNavOpen ? "active" : ""}`}>

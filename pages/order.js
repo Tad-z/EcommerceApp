@@ -11,9 +11,9 @@ import Link from 'next/link'
 
 
 export default function order() {
-    const dispatch = useDispatch();
-    const [{ loading, data, error }] = useFetchOrder();
-    const [{ isLoading, serverError, apiData }] = useFetchCart();
+    useDispatch();
+    useFetchOrder();
+    useFetchCart();
     const orders = useSelector((state) => state.order.queue);
     const cart = useSelector((state) => state.cart.cart);
     let total = useSelector((state) => state.cart.price);
@@ -99,7 +99,7 @@ export default function order() {
                 </div>
                 <div className='w-full flex justify-center border-t p-10'>
                     <button className={styles.loginButton}>
-                        <a href='/thankyou'>Complete Order</a>
+                        <Link href='/thankyou'> Complete Order </Link>
                     </button>
                 </div>
                 <div className='text-center border-t my-5 py-5 hover:text-[#946F3A]'>

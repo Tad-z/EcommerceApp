@@ -12,10 +12,10 @@ import styles from "../styles/Home.module.css";
 
 export default function CartScreen() {
   const dispatch = useDispatch();
-  const [{ isLoading, serverError, apiData }] = useFetchCart();
+  const [{ isLoading, serverError }] = useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
-  console.log("p",cartItems);
+  
   
 
   const router = useRouter();
