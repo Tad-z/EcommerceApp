@@ -3,11 +3,10 @@ import Head from "next/head";
 import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
 import { useFetchCart } from "../hooks/fetchCart";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { GrClose } from "react-icons/gr"
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "../assets/logo2.jpg";
 
@@ -95,16 +94,17 @@ const Header = ({ title }) => {
                       )}
                     </p>
                   </Link>
-                  <a
-                    href="/"
-                    className={styles.navLinks}
-                    onClick={() => {
-                      localStorage.clear();
-                      forceRefresh()
-                    }}
-                  >
-                    Logout
-                  </a>
+                  <Link href="/">
+                    <a
+                      className={styles.navLinks}
+                      onClick={() => {
+                        localStorage.clear();
+                        forceRefresh()
+                      }}
+                    >
+                      Logout
+                    </a>
+                  </Link>
                 </>
               )}
               {auth == null && (

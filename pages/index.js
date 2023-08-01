@@ -21,7 +21,7 @@ import { useFetchProducts } from "../hooks/fetchProducts";
 import { useSelector } from "react-redux";
 import { ColorRing } from "react-loader-spinner";
 
-export default function Home({ }) {
+export default function Home() {
   const [{ isLoading, serverError }] = useFetchProducts();
   const products = useSelector(
     (state) => state.products.queue
