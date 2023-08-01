@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import CheckoutWizard from "../components/CheckoutWizard";
 import Header from "../components/Header";
@@ -6,9 +6,7 @@ import Main from "../components/Main";
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../reducers/error";
-import { getServerData, postServerData } from "./api/helper";
-import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
+import { postServerData } from "./api/helper";
 import { useRouter } from "next/router";
 
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from '../styles/Home.module.css'
 import FeaturedProducts from "../components/FeaturedProducts";
 import ProductItem from "../components/ProductItem";
-import Link from "next/link";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Main from "../components/Main";

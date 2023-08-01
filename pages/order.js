@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from '../components/Header'
-import Main from '../components/Main'
 import CheckoutWizard from '../components/CheckoutWizard'
 import styles from '../styles/Home.module.css'
 import { useDispatch, useSelector } from 'react-redux'

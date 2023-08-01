@@ -1,12 +1,10 @@
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ColorRing } from "react-loader-spinner";
 import CardCart from "../components/CardCart";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import Main from "../components/Main";
-import ApiCall from "./api/helper";
 import { useFetchCart } from "../hooks/fetchCart";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItemFromCart, updateCart } from "../reducers/cartReducer";

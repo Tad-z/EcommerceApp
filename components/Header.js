@@ -4,10 +4,9 @@ import Head from "next/head";
 import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
 import { useFetchCart } from "../hooks/fetchCart";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { GrClose } from "react-icons/gr"
-import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";

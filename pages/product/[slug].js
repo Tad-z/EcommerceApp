@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react'
 import ReactStars from 'react-stars';
@@ -7,7 +6,7 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
-import ApiCall, { postServerData } from '../api/helper';
+import { postServerData } from '../api/helper';
 import { getError } from '../../reducers/error';
 import styles from '../../styles/Home.module.css'
 

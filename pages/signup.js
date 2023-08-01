@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import Main from "../components/Main";
 import { useForm } from "react-hook-form";
 import ApiCall from "./api/helper";
 import { toast } from "react-toastify";

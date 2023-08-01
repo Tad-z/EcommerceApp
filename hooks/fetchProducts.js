@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import ApiCall, { getServerData } from "../pages/api/helper";
+import { getServerData } from "../pages/api/helper";
 
 import * as Action from "../reducers/productsReducer";
 
