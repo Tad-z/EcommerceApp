@@ -332,7 +332,7 @@
 
   .header {
     background-image: linear-gradient(rgba(62, 59, 59, 0.2),
-        rgba(24, 23, 23, 0.2)), url(../assets/mobile.jpg);
+        rgba(24, 23, 23, 0.2)), url(../assets/ipad.jpg);
     background-size: cover;
   }
 
@@ -360,6 +360,14 @@
 
 
 
+}
+@media (max-width: 450px) {
+  .header {
+    background-image: linear-gradient(rgba(62, 59, 59, 0.2),
+        rgba(24, 23, 23, 0.2)), url(../assets/mobile.jpg);
+    background-size: cover;
+  }
+  
 }
 
 @media (prefers-color-scheme: dark) {
