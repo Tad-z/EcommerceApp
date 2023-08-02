@@ -2,16 +2,19 @@ import React from 'react'
 import Header from '../components/Header'
 import CheckoutWizard from '../components/CheckoutWizard'
 import styles from '../styles/Home.module.css'
+import { clearCart } from '../reducers/cartReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFetchOrder } from '../hooks/fetchOrder'
 import { useFetchCart } from '../hooks/fetchCart'
 import CartOrder from "../components/CartOrder";
 import Link from 'next/link'
+import axios from 'axios'
+
 
 
 
 export default function Order() {
-    useDispatch();
+    const dispatch = useDispatch();
     useFetchOrder();
     useFetchCart();
     const orders = useSelector((state) => state.order.queue);
@@ -44,6 +47,12 @@ export default function Order() {
         email = order.user.email
     }
     // console.log(email)
+
+    const clearCartItems = async () => { 
+        dispatch(clearCart());
+        await axios.delete(`https://emaxapi.onrender.com/cart/`);
+    }
+
     return (
         <>
             <Header title="Review Order" />
@@ -53,8 +62,8 @@ export default function Order() {
                     <CheckoutWizard activeStep={2} />
                 </div>
                 <div className='grid lg:p-10 md:p-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-2 text-gray-600 gap-6'>
-                    <div className=' bg-white shadow-sm self-center rounded-lg  p-8'>
-                        <div className='flex flex-col items-start gap-6'>
+                    <div className=' bg-white shadow-sm self-start rounded-lg  p-8'>
+                        <div className='flex flex-col  items-start gap-6'>
                             <div className='flex justify-between px-5 pb-5 border-b w-full'>
                                 <p>Email</p>
                                 <p>{email}</p>
@@ -98,7 +107,7 @@ export default function Order() {
 
                 </div>
                 <div className='w-full flex justify-center border-t p-10'>
-                    <button className={styles.loginButton}>
+                    <button className={styles.loginButton} onClick={clearCartItems}>
                         <Link href='/thankyou'> Complete Order </Link>
                     </button>
                 </div>

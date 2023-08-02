@@ -15,8 +15,8 @@ export default function CartScreen() {
   const [{ isLoading, serverError }] = useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
-  
-  
+
+
 
   const router = useRouter();
   if (isLoading)
@@ -42,6 +42,7 @@ export default function CartScreen() {
   const removeItemHandler = async (item) => {
     const productId = item.CartId;
     dispatch(removeItemFromCart({ productId }));
+   
     await axios.delete(`https://emaxapi.onrender.com/cart/${productId}`);
   };
 
@@ -52,14 +53,16 @@ export default function CartScreen() {
     const post = { quantity: item.quantity };
     const quantity = item.quantity;
     dispatch(updateCart({ productId, quantity }));
+ 
     console.log("q", quantity);
     await axios.patch(`https://emaxapi.onrender.com/cart/${productId}`, post);
   };
 
+
   return (
     <>
       <Header title="Shopping Cart" />
-      <div className="p-4">  
+      <div className={styles.tableContainer}>
         {cartItems?.length === 0 ? (
           <div>
             <h1 className="my-7 text-xl font-bold">Shopping Cart</h1>
@@ -68,31 +71,33 @@ export default function CartScreen() {
         ) : (
           <>
             <h1 className="mt-11 mb-6 text-xl font-bold">Shopping Cart</h1>
-            <div className="grid md:grid-cols-4 md:gap-3 sm: grid-rows-2">
-              <div className="overflow-x auto md:col-span-3">
-                <table className="min-w-full ">
-                  <thead className="border-b ">
-                    <tr>
-                      <th className="px-5 sm:text-lg text-left">Products</th>
-                      <th className="p-5 sm:text-lg text-center">Price</th>
-                      <th className="p-5 sm:text-lg text-right">Quantity</th>
-                      <th className="p-5 sm:text-lg">Total</th>
-                      <th className="p-5 sm:text-lg text-right">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartItems?.map((item) => (
-                      <>
-                        <CardCart
-                          key={item.slug}
-                          updateProducts={updateProducts}
-                          removeItemHandler={removeItemHandler}
-                          item={item}
-                        />
-                      </>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="grid grid-cols-4 ">
+              <div className="md:col-span-3 lg:col-span-3">
+                <div>
+                  <table className="min-w-full">
+                    <thead className="border-b ">
+                      <tr>
+                        <th className="px-5 sm:text-lg text-left">Products</th>
+                        <th className="p-5 sm:text-lg text-center">Price</th>
+                        <th className="p-5 sm:text-lg text-right">Quantity</th>
+                        <th className="p-5 sm:text-lg">Total</th>
+                        <th className="p-5 sm:text-lg text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartItems?.map((item) => (
+                        <>
+                          <CardCart
+                            key={item.slug}
+                            updateProducts={updateProducts}
+                            removeItemHandler={removeItemHandler}
+                            item={item}
+                          />
+                        </>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div className="checkout-card place-self-center p-5">
                 <ul>

@@ -21,6 +21,7 @@ export default function ProductItem({ product }) {
             `https://emaxapi.onrender.com/cart`,
             post
           );
+          
           if (result) {
             toast("You have added to cart successfully");
             console.log("success");

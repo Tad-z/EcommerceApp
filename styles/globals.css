@@ -110,6 +110,7 @@ footer a:hover {
 
 
 
+
 .update-products-button {
   @apply rounded-md w-20 m-auto border mb-1 border-[#5e4c34] p-2 shadow outline-none hover:bg-[#76592e];
 }
@@ -135,6 +136,16 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  th, td {
+    /* Adjust the table cells for better display on small screens */
+    padding: 8px;
+    font-size: 14px;
+  }
   .btn-mobile-nav {
     display: block;
     z-index: 999;

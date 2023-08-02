@@ -9,33 +9,49 @@ import { GrClose } from "react-icons/gr"
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo2.jpg";
+import db from "../db"
+
+import { useRouter } from "next/router";
+
 
 const Header = ({ title }) => {
+
   const [auth, setAuth] = useState("");
-  const [username, setUsername] = useState("")
+  const [usernamee, setUsername] = useState("")
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const toggleMobileNav = () => {
     setMobileNavOpen((prevState) => !prevState);
   };
   const [isFixed, setIsFixed] = useState(false);
 
+
+
   useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
-  const usernamee = useSelector((state) => state.loginDetails.username);
-  const forceRefresh = () => {
-    window.location.reload(true);
+
+
+
+  // useSelector((state) => state.loginDetails.username);
+  const fetchUsername = async () => {
+    try {
+      const user = await db.users.get(1);
+      if (user) {
+        setUsername(user.username);
+      }
+    } catch (error) {
+      console.error(`Error retrieving username: ${error}`);
+    }
   };
 
   useEffect(() => {
 
-    if (typeof window !== "undefined" || usernamee !== null) {
+    if (typeof window !== "undefined") {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
-      window.localStorage.setItem("username", usernamee);
-      let username = window.localStorage.getItem("username");
-      setUsername(username);
     }
+    fetchUsername();
+
 
     const handleScroll = () => {
       let y = window.scrollY;
@@ -53,7 +69,21 @@ const Header = ({ title }) => {
       window.removeEventListener("scroll", handleScroll);
     };
 
-  }, [usernamee]);
+
+
+
+  }, []);
+
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    // Clear local storage
+    localStorage.clear();
+
+    // Navigate to the homepage using Next.js router
+    await router.push("/");
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -83,7 +113,7 @@ const Header = ({ title }) => {
               </Link>
               {auth == "true" && (
                 <>
-                  <a className={styles.navLinks}>{`Hey ${username}`}</a>
+                  <a className={styles.navLinks}>{`Hey ${usernamee}`}</a>
                   <Link href="/cart">
                     <p className={styles.navLinks}>
                       Cart
@@ -94,13 +124,11 @@ const Header = ({ title }) => {
                       )}
                     </p>
                   </Link>
-                  <Link href="/index">
-                    <a       
+                  <Link href="/">
+                    <a
                       className={styles.navLinks}
-                      onClick={() => {
-                        localStorage.clear();
-                        forceRefresh()
-                      }}
+                      onClick={handleLogout}
+
                     >
                       Logout
                     </a>

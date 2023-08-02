@@ -9,11 +9,13 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import styles from "../styles/form.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import db from "../db.js"
 import * as Action from "../reducers/loginReducer";
 
 
 export default function LoginScreen() {
   const dispatch = useDispatch();
+  const [usernamee, setUsername] = useState("");
   const {
     handleSubmit,
     register,
@@ -24,6 +26,15 @@ export default function LoginScreen() {
   const submitHandler = async ({ username, password }) => {
     console.log(username);
     if (username) {
+      setUsername(username);
+      console.log(username);
+      db.users.add({
+        username: username,
+      }).then(() => {
+        console.log('Username stored successfully!');
+      }).catch((error) => {
+        console.error(`Error storing username: ${error}`);
+      });
       dispatch(Action.setUsername({ username }));
     }
     try {
@@ -80,6 +91,7 @@ export default function LoginScreen() {
                 },
               })}
               className={styles.input}
+              name="username"
               id="username"
               autoFocus
             />
