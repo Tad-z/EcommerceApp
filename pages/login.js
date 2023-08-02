@@ -16,6 +16,7 @@ import * as Action from "../reducers/loginReducer";
 export default function LoginScreen() {
   const dispatch = useDispatch();
   const [usernamee, setUsername] = useState("");
+  console.log(usernamee);
   const {
     handleSubmit,
     register,
