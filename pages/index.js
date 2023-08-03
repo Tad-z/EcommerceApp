@@ -56,17 +56,17 @@ export default function Home() {
     <div>
       <Header title="Home Page" />
       <Hero />
-      <Main>  
+      <Main>
         <h2 className="mb-8 mx-8 lg:text-4xl md:text-3xl text-2xl font-semibold">Best Sellers</h2>
         <div className={styles.new}>
-          <div className={`${styles.featuredProducts} ${styles.track}`}>
-            {featuredProducts.map((product) => <FeaturedProducts product={product} key={product._id} />)}
+            <div className={`${styles.featuredProducts} ${styles.track}`}>
+              {featuredProducts.map((product) => <FeaturedProducts product={product} key={product._id} />)}
           </div>
         </div>
         <h2 className="lg:text-4xl md:text-3xl text-2xl  mb-8 mx-8 font-bold" id="products">Our Products</h2>
         {/* <p className=" text-lg mb-4">We offer the best products at the best price</p> */}
         <div className={styles.form}>
-          <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)}  name='query' type='search' />
+          <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)} name='query' type='search' />
           <AiOutlineSearch className={styles.search} />
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">

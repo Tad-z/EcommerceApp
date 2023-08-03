@@ -30,7 +30,7 @@
 .header {
   height: 100vh;
   background-image: linear-gradient(rgba(62, 59, 59, 0.2),
-      rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
+  rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
   background-size: cover;
   max-width: 100%;
   background-repeat: no-repeat;
@@ -115,9 +115,8 @@
   width: 100%;
   border-radius: 8px;
   border: 1px solid #eaeaea;
-  height: 320px;
+  height: 380px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 .new {
@@ -125,19 +124,21 @@
   justify-content: start;
   gap: 20px;
   position: relative;
-  height: 330px;
+  height: 400px;
   width: 100%;
   overflow: hidden;
   margin-bottom: 96px;
-
 }
+
+
 
 .track {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 30s linear infinite;
   width: 100%;
+  animation: marquee 10s linear infinite;
+  animation-delay: 3s;
 }
 
 .track:hover {
@@ -146,11 +147,11 @@
 
 @keyframes marquee {
   from {
-    transform: translate(0%);
+    transform: translateX(0%);
   }
 
   to {
-    transform: translate(100%);
+    transform: translateX(30%);
   }
 }
 
@@ -321,6 +322,7 @@
     width: 100%;
     flex-direction: column;
   }
+ 
 
   .input {
     width: 100%;
@@ -367,6 +369,35 @@
         rgba(24, 23, 23, 0.2)), url(../assets/mobile.jpg);
     background-size: cover;
   }
+  .track {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    width: 100%;
+    animation: marquee 10s linear infinite;
+  }
+  .new {
+    overflow-x: auto;
+  }
+  
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+  
+    to {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* .track {
+    animation: none;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    display: flex; 
+    width: 100%;; 
+  } */
   
 }
 

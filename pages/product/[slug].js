@@ -42,13 +42,13 @@ export default function ProductScreen({ data }) {
         try {
           const post = { productId: product._id };
           const result = await postServerData(
-            `https://emaxapi.onrender.com/order`,
+            `https://emaxapi.onrender.com/cart`,
             post
           );
           if (result) {
             toast("You have added to cart successfully");
             console.log("success");
-            router.push("/cart");
+            // router.push("/cart");
           } else {
             toast.error("Something went wrong");
             console.log("error1");
