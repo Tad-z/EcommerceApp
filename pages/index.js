@@ -19,7 +19,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 // }
 import { useFetchProducts } from "../hooks/fetchProducts";
 import { useSelector } from "react-redux";
-import { ColorRing } from "react-loader-spinner";
+// import { ColorRing } from "react-loader-spinner";
+import { RingLoader } from "react-spinners"
 
 export default function Home() {
   const [{ isLoading, serverError }] = useFetchProducts();
@@ -34,14 +35,8 @@ export default function Home() {
     return (
       <div className="loader-container">
         <div>
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+          <RingLoader
+            color= '#5e4c34'
           />
         </div>
       </div>
