@@ -53,10 +53,8 @@ export default function Home() {
       <Hero />
       <Main>
         <h2 className="mb-8 mx-8 lg:text-4xl md:text-3xl text-2xl font-semibold">Best Sellers</h2>
-        <div className={styles.new}>
-            <div className={`${styles.featuredProducts} ${styles.track}`}>
+        <div className={styles.bestSellers}>
               {featuredProducts.map((product) => <FeaturedProducts product={product} key={product._id} />)}
-          </div>
         </div>
         <h2 className="lg:text-4xl md:text-3xl text-2xl  mb-8 mx-8 font-bold" id="products">Our Products</h2>
         {/* <p className=" text-lg mb-4">We offer the best products at the best price</p> */}

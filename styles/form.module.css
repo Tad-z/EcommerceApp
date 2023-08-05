@@ -113,6 +113,7 @@
     width: 100%;
     margin-top: 1rem;
     padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
     background: linear-gradient(
         130deg,
         #9f7d4e,
@@ -152,6 +153,7 @@
 
 .seriesButton {
     border-radius: 6px;
+    transition: all 0.2s ease-in-out;
     width: 11rem;
     background: linear-gradient(
         120deg,

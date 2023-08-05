@@ -14,6 +14,7 @@
   font-size: 16px;
   font-weight: 600;
   background-color: #946F3A;
+  transition: all 0.2s ease-in-out;
   color: #f7f7f1;
   text-decoration: none;
   display: inline-block;
@@ -30,7 +31,7 @@
 .header {
   height: 100vh;
   background-image: linear-gradient(rgba(62, 59, 59, 0.2),
-  rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
+      rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
   background-size: cover;
   max-width: 100%;
   background-repeat: no-repeat;
@@ -108,18 +109,41 @@
 }
 
 /*  */
+.bestSellers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 96px;
+}
 
-.cardSlide {
+.cardBest {
   margin: 8px 0;
   display: block;
+  position: relative;
+  overflow: hidden;
   width: 100%;
   border-radius: 8px;
   border: 1px solid #eaeaea;
-  height: 380px;
+  height: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.new {
+.cardBest::before {
+  content: "Best Sellers";
+  position: absolute;
+  top: 5%;
+  right: -37%;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  background-color: #333;
+  padding: 0.5rem 4.7rem;
+  transform: rotate(45deg);
+}
+
+/* .new {
   display: flex;
   justify-content: start;
   gap: 20px;
@@ -143,7 +167,7 @@
 
 .track:hover {
   animation-play-state: paused;
-}
+} */
 
 @keyframes marquee {
   from {
@@ -181,6 +205,7 @@
 .addtocartbutton {
   width: 100%;
   color: #eaeaea;
+  transition: all 0.2s ease-in-out;
   margin: 0 auto;
   display: block;
   border-radius: 8px;
@@ -199,6 +224,7 @@
   width: 100%;
   color: #333;
   margin: 10px auto;
+  transition: all 0.2s ease-in-out;
   display: block;
   border-radius: 8px;
   border: 1px solid #946f3a;
@@ -322,7 +348,7 @@
     width: 100%;
     flex-direction: column;
   }
- 
+
 
   .input {
     width: 100%;
@@ -363,12 +389,14 @@
 
 
 }
+
 @media (max-width: 450px) {
   .header {
     background-image: linear-gradient(rgba(62, 59, 59, 0.2),
         rgba(24, 23, 23, 0.2)), url(../assets/mobile.jpg);
     background-size: cover;
   }
+
   .track {
     position: absolute;
     white-space: nowrap;
@@ -376,29 +404,56 @@
     width: 100%;
     animation: marquee 10s linear infinite;
   }
+
   .new {
     overflow-x: auto;
   }
-  
-  
+
+
+
   @keyframes marquee {
     from {
       transform: translateX(0%);
     }
-  
+
     to {
       transform: translateX(100%);
     }
   }
-  
-  /* .track {
-    animation: none;
+  .bestSellers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    margin-bottom: 80px;
     overflow-x: scroll;
-    scroll-behavior: smooth;
-    display: flex; 
-    width: 100%;; 
-  } */
+  }
   
+  .cardBest {
+    margin: 8px 0;
+    display: block;
+    position: relative;
+    overflow-y: hidden;
+    width: 80vw;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    height: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .cardBest::before {
+    content: "Best Sellers";
+    position: absolute;
+    top: 4%;
+    right: -29%;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background-color: #333;
+    padding: 0.5rem 4.8rem;
+    transform: rotate(45deg);
+  }
+
 }
 
 @media (prefers-color-scheme: dark) {

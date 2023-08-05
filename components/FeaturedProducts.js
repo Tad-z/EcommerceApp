@@ -12,8 +12,8 @@ export async function getServerSideProps() {
 
 export default function FeaturedProducts({ product }) {
     return (
-        <div className={style.cardSlide}>
-            <img className='image' alt={product.name} src={`https://emaxapi.onrender.com/${product.productImage}`} />
+        <div className={style.cardBest}>
+            <img className={style.cardImage} alt={product.name} src={`https://emaxapi.onrender.com/${product.productImage}`} />
             <div className='flex flex-col justify-center p-5'>
                 <h2 className='text-lg text-left'>{product.title}</h2>
                 <h2 className='mb-2 text-left text-lg font-bold'>N{product.price}</h2>
