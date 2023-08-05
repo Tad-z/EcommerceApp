@@ -106,7 +106,7 @@ const Header = ({ title }) => {
           />
         </Link>
         <nav className={`main-nav ${mobileNavOpen ? "active" : ""}`}>
-          <div className="flex justify-center items-center gap-8 flex-col lg:flex-row">
+          <div className="flex justify-center items-center gap-5 flex-col lg:flex-row">
             <div className="mobile-nav-links">
               <Link href="#products" scroll={false}>
                 <p className={styles.navLinks}>Shop</p>
