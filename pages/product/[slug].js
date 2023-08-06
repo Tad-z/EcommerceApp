@@ -102,19 +102,21 @@ export default function ProductScreen({ data }) {
               </li>
               <br></br>
               <li>
-                <p><span className='font-bold'>Colour:</span> {product?.color}</p>
+                <p><span className='font-bold'>Colour:</span> &nbsp; {product?.color}</p>
               </li>
               <br></br>
-              <li>
+              <div className='flex items-center gap-2'>
                 <p className='font-bold'>Size:</p>
-                <button className='size-button'>M</button>
-                <button className='size-button'>L</button>
-                <button className='size-button'>XL</button>
-              </li>
+                <div>
+                  <button className='size-button'>M</button>
+                  <button className='size-button'>L</button>
+                  <button className='size-button'>XL</button>
+                </div>
+              </div>
               <li>
-                <p><span className='font-bold'>Categories:</span> Men, Women</p>
+                <p><span className='font-bold'>Categories: &nbsp;</span> Men, Women</p>
                 <br />
-                <p><span className='font-bold'>Tag:</span> Fashion,Cool,Nigeria,USA</p>
+                <p><span className='font-bold'>Tag: &nbsp;</span> Fashion,Cool,Nigeria,USA</p>
               </li>
               <br />
               <li>

@@ -45,7 +45,6 @@ const Header = ({ title }) => {
   };
 
   useEffect(() => {
-
     if (typeof window !== "undefined") {
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
@@ -76,6 +75,7 @@ const Header = ({ title }) => {
 
   const router = useRouter();
 
+  // Logout function
   const handleLogout = async () => {
     // Clear local storage
     localStorage.clear();
@@ -83,6 +83,15 @@ const Header = ({ title }) => {
     // Navigate to the homepage using Next.js router
     await router.push("/");
     window.location.reload();
+  };
+
+  // Logout after 1 hour
+  const timedLogout = () => {
+    setTimeout(() => {
+      if (auth == "true") {
+        handleLogout();
+      }
+    }, 3600000);
   };
 
   return (
@@ -106,13 +115,14 @@ const Header = ({ title }) => {
           />
         </Link>
         <nav className={`main-nav ${mobileNavOpen ? "active" : ""}`}>
-          <div className="flex justify-center items-center gap-5 flex-col lg:flex-row">
+          <div className="flex justify-center items-center gap-8 flex-col lg:flex-row">
             <div className="mobile-nav-links">
               <Link href="#products" scroll={false}>
                 <p className={styles.navLinks}>Shop</p>
               </Link>
               {auth == "true" && (
                 <>
+                  {timedLogout()}
                   <a className={styles.navLinks}>{`Hey ${usernamee}`}</a>
                   <Link href="/cart">
                     <p className={styles.navLinks}>

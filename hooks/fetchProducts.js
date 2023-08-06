@@ -27,6 +27,9 @@ export const useFetchProducts = () => {
             console.log(data.products);
             let products = data.products;
             try {
+              setTimeout(() => {
+                setGetData((prev) => ({ ...prev, isLoading: false }));
+              }, 3000);
               if (products.length > 0) {
                 setGetData((prev) => ({ ...prev, isLoading: false }));
                 setGetData((prev) => ({ ...prev, apiData: { products } }));

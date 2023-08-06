@@ -11,6 +11,24 @@
   text-decoration: underline;
 }
 
+.button {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #946F3A;
+  transition: all 0.2s ease-in-out;
+  color: #f7f7f1;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  background-color: #76592e;
+}
+
 .loginButton {
   font-size: 16px;
   font-weight: 600;

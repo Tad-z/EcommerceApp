@@ -22,8 +22,9 @@ import { useSelector } from "react-redux";
 // import { ColorRing } from "react-loader-spinner";
 import { RingLoader } from "react-spinners"
 
+
 export default function Home() {
-  const [{ isLoading, serverError }] = useFetchProducts();
+  let [{ isLoading, serverError }] = useFetchProducts();
   const products = useSelector(
     (state) => state.products.queue
   )
