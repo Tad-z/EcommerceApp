@@ -38,6 +38,8 @@ export default function Home() {
         <div>
           <RingLoader
             color= '#5e4c34'
+            loading={isLoading}
+            size={80}
           />
         </div>
       </div>
