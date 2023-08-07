@@ -462,8 +462,8 @@
   .cardBest::before {
     content: "Best Sellers";
     position: absolute;
-    top: 4%;
-    right: -29%;
+    top: 5%;
+    right: -25%;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 700;

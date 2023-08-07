@@ -88,9 +88,7 @@ const Header = ({ title }) => {
   // Logout after 1 hour
   const timedLogout = () => {
     setTimeout(() => {
-      if (auth == "true") {
         handleLogout();
-      }
     }, 3600000);
   };
 
