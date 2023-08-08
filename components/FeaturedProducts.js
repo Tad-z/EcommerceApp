@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -52,11 +51,6 @@ export default function FeaturedProducts({ product }) {
             <div className='flex flex-col justify-center px-5 py-3'>
                 <h2 className='text-lg text-left'>{product.title}</h2>
                 <h2 className='mb-2 text-left text-lg font-bold'>N{product.price}</h2>
-                 {/* <Link href={`/product/${product.slug}`}>
-                    <button type="button" className='w-[80%] text-[#333] my-2 mx-auto block rounded-md border-[#946f3a] py-1 px-1 bg-white'>
-                        View product details
-                    </button>
-                 </Link> */}
                 <button
                     type="button"
                     onClick={addToCartHandler}
