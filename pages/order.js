@@ -9,13 +9,14 @@ import { useFetchCart } from '../hooks/fetchCart'
 import CartOrder from "../components/CartOrder";
 import Link from 'next/link'
 import axios from 'axios'
+import { RingLoader } from "react-spinners"
 
 
 
 
 export default function Order() {
     const dispatch = useDispatch();
-    useFetchOrder();
+    const [{ isLoading, serverError }] = useFetchOrder();
     useFetchCart();
     const orders = useSelector((state) => state.order.queue);
     const cart = useSelector((state) => state.cart.cart);
@@ -24,6 +25,21 @@ export default function Order() {
     //     return item.CartId
     //    })
     //    console.log("c", cartItems);
+    if (isLoading)
+        return (
+            <div className="loader-container">
+                <div>
+                    <RingLoader
+                        color='#5e4c34'
+                        loading={isLoading}
+                        size={80}
+                    />
+                </div>
+            </div>
+        );
+
+    if (serverError)
+        return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
     const order = orders[orders.length - 1];
     let [fullname, phoneNumber, city, adress, email] = ""
@@ -48,7 +64,7 @@ export default function Order() {
     }
     // console.log(email)
 
-    const clearCartItems = async () => { 
+    const clearCartItems = async () => {
         dispatch(clearCart());
         await axios.delete(`https://emaxapi.onrender.com/cart/`);
     }

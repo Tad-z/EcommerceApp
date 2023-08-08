@@ -130,14 +130,18 @@
 /*  */
 .bestSellers {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  gap: 0.5rem;
+  gap: 3rem;
   margin-bottom: 96px;
+  height: 450px;
 }
 
 .cardBest {
   margin: 8px 0;
+  padding: 0;
   display: block;
   position: relative;
   overflow: hidden;
@@ -152,13 +156,13 @@
   content: "Best Sellers";
   position: absolute;
   top: 5%;
-  right: -37%;
+  right: -22%;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: white;
   background-color: #333;
-  padding: 0.5rem 4.7rem;
+  padding: 0.5rem 4.2rem;
   transform: rotate(45deg);
 }
 
@@ -197,6 +201,11 @@
     transform: translateX(30%);
   }
 }
+.productContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
 
 .card {
   margin-bottom: 8px;
@@ -219,6 +228,24 @@
 .card:hover {
   scale: 1.03;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.addtocartbuttonn {
+  width: 100%;
+  color: #eaeaea;
+  transition: all 0.2s ease-in-out;
+  margin: 10px auto 0 auto;
+  display: block;
+  border-radius: 8px;
+  margin-top: 2rem;
+  border: none;
+  padding: 8px 16px;
+  background-color: #6e5e48;
+}
+
+.addtocartbuttonn:hover,
+.addtocartbuttonn:active {
+  background-color: #5e4c34;
 }
 
 .addtocartbutton {
@@ -357,20 +384,39 @@
 }
 
 
-
+@media (max-width: 1024px) {
+  .productContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cardBest::before {
+    top: 6%;
+    right: -24%;
+    padding: 0.5rem 4rem;
+  }
+}
 
 
 
 
 @media (max-width: 900px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .productContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bestSellers {
+    gap: 1rem;
+  }
+  .cardBest::before {
+    top: 5%;
+    right: -28%;
+    padding: 0.4rem 3.8rem;
   }
 
 
   .input {
-    width: 100%;
+    padding: 10px 30px;
+    width: 80%;
   }
 
   .search {
@@ -409,7 +455,85 @@
 
 }
 
+@media (max-width: 768px) {
+  .productContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bestSellers {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    gap: 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  .cardBest {
+    overflow: hidden;
+    width: 30vw;
+    height: 90%;
+  }
+  
+  .cardBest::before {
+    top: 7%;
+    right: -31%;
+    padding: 0.3rem 4rem;
+  }
+}
+
+@media (max-width: 610px) {
+  .productContainer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .bestSellers {
+    display: grid;
+    justify-content: start;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    margin-bottom: 80px;
+    overflow-x: scroll;
+}
+
+.cardBest {
+  margin: 8px 0;
+  display: block;
+  position: relative;
+  overflow-y: hidden;
+  width: 50vw;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  height: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardBest::before {
+  content: "Best Sellers";
+  position: absolute;
+  top: 5%;
+  right: -25%;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  background-color: #333;
+  padding: 0.5rem 4.8rem;
+  transform: rotate(45deg);
+}
+.search {
+  left: 79%;
+}
+}
+
 @media (max-width: 450px) {
+  .productContainer{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
   .header {
     background-image: linear-gradient(rgba(62, 59, 59, 0.2),
         rgba(24, 23, 23, 0.2)), url(../assets/mobile.jpg);
@@ -439,15 +563,17 @@
       transform: translateX(100%);
     }
   }
+
   .bestSellers {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
-    gap: 1rem;
-    margin-bottom: 80px;
-    overflow-x: scroll;
+      display: grid;
+      justify-content: start;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      gap: 1rem;
+      margin-bottom: 80px;
+      overflow-x: scroll;
   }
-  
+
   .cardBest {
     margin: 8px 0;
     display: block;
@@ -459,6 +585,7 @@
     height: 90%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
   .cardBest::before {
     content: "Best Sellers";
     position: absolute;
@@ -471,6 +598,9 @@
     background-color: #333;
     padding: 0.5rem 4.8rem;
     transform: rotate(45deg);
+  }
+  .search {
+    left: 75%;
   }
 
 }

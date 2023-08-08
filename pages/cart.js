@@ -1,7 +1,6 @@
 import axios from "axios";
 import Link from "next/link";
 import React from "react";
-import { ColorRing } from "react-loader-spinner";
 import CardCart from "../components/CardCart";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
@@ -9,6 +8,7 @@ import { useFetchCart } from "../hooks/fetchCart";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItemFromCart, updateCart } from "../reducers/cartReducer";
 import styles from "../styles/Home.module.css";
+import { RingLoader } from "react-spinners"
 
 export default function CartScreen() {
   const dispatch = useDispatch();
@@ -20,21 +20,17 @@ export default function CartScreen() {
 
   const router = useRouter();
   if (isLoading)
-    return (
-      <div className="loader-container">
-        <div>
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-          />
-        </div>
+  return (
+    <div className="loader-container">
+      <div>
+        <RingLoader
+          color= '#5e4c34'
+          loading={isLoading}
+          size={80}
+        />
       </div>
-    );
+    </div>
+  );
 
   if (serverError)
     return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;

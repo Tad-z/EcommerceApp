@@ -30,7 +30,7 @@ export default function Home() {
   )
   const [input, setInput] = useState("")
   const Products = products.filter((product) => product.title.toLowerCase().includes(input))
-  const featuredProducts = products.slice(4, 9) || (8, 14)
+  const featuredProducts = products.slice(8, 11) || (12, 15)
   useSelector(state => console.log(state));
   if (isLoading)
     return (
@@ -65,7 +65,7 @@ export default function Home() {
           <input className={styles.input} value={input} onChange={(e) => setInput(e.target.value)} name='query' type='search' />
           <AiOutlineSearch className={styles.search} />
         </div>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+        <div className={styles.productContainer}>
           {Products.map((product) => <ProductItem product={product} key={product._id} />)}
         </div>
         <div className="flex justify-center my-2">
