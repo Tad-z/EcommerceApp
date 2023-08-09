@@ -48,6 +48,8 @@ export const cartReducer = createSlice({
       return {
         ...state,
         cart: [],
+        price: 0,
+        cartItems: 0,
       };
     }
   },
