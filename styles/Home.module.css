@@ -63,8 +63,8 @@
   display: flex;
   max-width: 100%;
   /* flex-direction: column; */
-  justify-content: start;
-  align-items: end;
+  justify-content: flex-start;
+  align-items: flex-end;
   margin-left: 2rem;
 }
 

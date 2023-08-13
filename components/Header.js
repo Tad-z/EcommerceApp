@@ -70,7 +70,7 @@ const Header = ({ title }) => {
 
       window.addEventListener("scroll", handleScroll);
 
-      timedLogout()
+      // timedLogout()
 
       return () => {
         window.removeEventListener("scroll", handleScroll);
