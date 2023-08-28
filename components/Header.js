@@ -38,16 +38,17 @@ const Header = ({ title }) => {
       const userCount = await db.users.count(); // Get the total number of users
       if (userCount > 0) {
         const lastUserId = userCount; // The last user's ID will be equal to the total user count
-        const user = await db.users.get(lastUserId);
+        const user = await db.users.get(lastUserId); // Get the last user's details
         if (user) {
           setUsername(user.username);
         }
-      } else {
+       else {
         console.log('No users found');
       }
+    };
       } catch (error) {
         console.error(`Error retrieving username: ${error}`);
-      }
+      };
     };
 
     useEffect(() => {
