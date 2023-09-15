@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from '../styles/Home.module.css'
 import { ToastContainer } from "react-toastify";
-import { useFetchCart } from "../hooks/fetchCart";
-import { useSelector } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { GrClose } from "react-icons/gr"
 import Link from "next/link";
