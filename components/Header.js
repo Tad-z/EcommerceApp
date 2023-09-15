@@ -9,57 +9,52 @@ import { GrClose } from "react-icons/gr"
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo2.jpg";
-import db from "../db"
-
 import { useRouter } from "next/router";
+import { getServerData } from "../pages/api/helper";
+
 
 
 const Header = ({ title }) => {
-
+  const [name, setName] = useState("user");
+  const [length, setLength] = useState();
   const [auth, setAuth] = useState("");
-  const [usernamee, setUsername] = useState("")
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const toggleMobileNav = () => {
     setMobileNavOpen((prevState) => !prevState);
   };
   const [isFixed, setIsFixed] = useState(false);
 
-
-
-  useFetchCart();
-  useSelector((state) => console.log(state));
-  const cartItems = useSelector((state) => state.cart.cart);
-
-
-
-  // useSelector((state) => state.loginDetails.username);
-  const fetchUsername = async () => {
+  const getCartItems = async () => {
     try {
-      const userCount = await db.users.count(); // Get the total number of users
-      if (userCount > 0) {
-        const lastUserId = userCount; // The last user's ID will be equal to the total user count
-        const user = await db.users.get(lastUserId); // Get the last user's details
-        if (user) {
-          setUsername(user.username);
-        }
-        else {
-          console.log('No users found');
-        }
+      const cartItems = await getServerData("https://emaxapi.onrender.com/cart")
+      if (!cartItems) return
+      const { data } = cartItems
+      let count = data.count
+      console.log("count", count);
+      if (count) {
+        setLength(count)
       }
+      return count;
     } catch (error) {
-      console.error(`Error retrieving username: ${error}`);
+      console.log(error.message)
     }
   }
 
+
+  // useFetchCart();
+  // useSelector((state) => console.log(state));
+  // const cartItems = useSelector((state) => state.cart.cart);
+
   useEffect(() => {
+    getCartItems();
     if (typeof window !== "undefined") {
+      const user = localStorage.getItem("username")
+      setName(user);
       const isauth = window.localStorage.getItem("isAuthenticated");
       setAuth(isauth);
     }
-    fetchUsername();
-
-
     const handleScroll = () => {
+      // getCartItems()
       let y = window.scrollY;
       console.log("scroll", y);
       if (y > visualViewport.height) {
@@ -69,17 +64,16 @@ const Header = ({ title }) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleClick = async() => {
+      await getCartItems()
+    }
 
-    // timedLogout()
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("click", handleClick);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-
-
-
-
   }, []);
 
   const router = useRouter();
@@ -130,13 +124,13 @@ const Header = ({ title }) => {
               {auth == "true" && (
                 <>
                   {timedLogout()}
-                  <a className={styles.navLinks}>{`Hey ${usernamee}`}</a>
+                  <a className={styles.navLinks}>{`Hey ${name}`}</a>
                   <Link href="/cart">
                     <p className={styles.navLinks}>
                       Cart
-                      {cartItems.length > 0 && (
+                      {length > 0 && (
                         <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
-                          {cartItems.length}
+                          {length}
                         </span>
                       )}
                     </p>

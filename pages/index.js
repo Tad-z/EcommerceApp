@@ -31,7 +31,6 @@ export default function Home() {
   const [input, setInput] = useState("")
   const Products = products.filter((product) => product.title.toLowerCase().includes(input))
   const featuredProducts = products.slice(8, 11) || (12, 15)
-  useSelector(state => console.log(state));
   if (isLoading)
     return (
       <div className="loader-container">

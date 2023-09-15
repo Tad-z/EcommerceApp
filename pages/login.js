@@ -6,17 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import styles from "../styles/form.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import db from "../db.js"
-import * as Action from "../reducers/loginReducer";
 
 
 export default function LoginScreen() {
-  const dispatch = useDispatch();
-  const [usernamee, setUsername] = useState("");
-  console.log(usernamee);
   const {
     handleSubmit,
     register,
@@ -25,22 +19,9 @@ export default function LoginScreen() {
 
   const router = useRouter();
   const submitHandler = async ({ username, password }) => {
-    console.log(username);
-    if (username) {
-      setUsername(username);
-      console.log(username);
-      db.users.add({
-        username: username,
-      }).then(() => {
-        console.log('Username stored successfully!');
-      }).catch((error) => {
-        console.error(`Error storing username: ${error}`);
-      });
-      dispatch(Action.setUsername({ username }));
-    }
     try {
       const response = await ApiCall.postMethod(
-        "https://emaxapi.onrender.com/user/login",
+        "http://localhost:4000/user/login",
         {
           username,
           password,
@@ -48,9 +29,12 @@ export default function LoginScreen() {
       );
 
       if (response) {
+        console.log("respnse", response);
         toast("You are logged in");
         const data = response.data;
         const { token } = data;
+        const { username } = data;
+        localStorage.setItem("username", username);
         localStorage.setItem("token", token);
         localStorage.setItem("isAuthenticated", true);
         console.log("success");

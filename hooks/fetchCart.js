@@ -34,7 +34,7 @@ export const useFetchCart = () => {
               setGetData((prev) => ({ ...prev, serverError: error }));
             }
         })();
-    }, [dispatch]);
+    }, []);
     
     return [getData, setGetData];
 }

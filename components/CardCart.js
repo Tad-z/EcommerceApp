@@ -45,7 +45,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
             </td>
             <td className='p-5 text-center'>
                 <button onClick={() => removeItemHandler(item)}>
-                    <BiXCircle className="h-5 w-5"></BiXCircle>
+                    <BiXCircle id="myButton" className="h-5 w-5"></BiXCircle>
                 </button>
             </td>
             <td>
