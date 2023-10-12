@@ -9,6 +9,8 @@ import Image from "next/image";
 import logo from "../assets/logo2.jpg";
 import { useRouter } from "next/router";
 import { getServerData } from "../pages/api/helper";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 
 
 
@@ -132,12 +134,14 @@ const Header = ({ title }) => {
                   <a className={styles.navLinks}>{`Hey ${name}`}</a>
                   <Link href="/cart">
                     <p className={styles.navLinks}>
-                      Cart
-                      {length > 0 && (
-                        <span className="bg-red-500 ml-1 rounded-full text-sm px-2 py-1">
-                          {length}
-                        </span>
-                      )}
+                      <span className="flex items-center">
+                        <AiOutlineShoppingCart size={26}/>
+                        {length > 0 && (
+                          <sup className="bg-[#946F3A] ml-1 rounded-full text-sm px-2 py-1">
+                            {length}
+                          </sup>
+                        )}
+                      </span>
                     </p>
                   </Link>
                   <Link href="/">
