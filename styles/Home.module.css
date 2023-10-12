@@ -49,7 +49,7 @@
 
 .header {
   height: 100vh;
-  background-image: linear-gradient(rgba(62, 59, 59, 0.2),
+  background-image: linear-gradient(rgba(154, 153, 153, 0.2),
       rgba(24, 23, 23, 0.2)), url(../assets/hero8.jpg);
   background-size: cover;
   max-width: 100%;
@@ -535,7 +535,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
   .header {
-    background-image: linear-gradient(rgba(108, 107, 107, 0.2),
+    background-image: linear-gradient(rgba(154, 153, 153, 0.2),
         rgba(83, 82, 82, 0.2)), url(../assets/mobile.jpg);
     background-size: cover;
   }
