@@ -12,7 +12,7 @@ import { RingLoader } from "react-spinners"
 
 export default function CartScreen() {
   const dispatch = useDispatch();
-  const [{ isLoading, serverError }] = useFetchCart();
+  const [{ isLoading }] = useFetchCart();
   useSelector((state) => console.log(state));
   const cartItems = useSelector((state) => state.cart.cart);
 
