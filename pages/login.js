@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import styles from "../styles/form.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-
 export default function LoginScreen() {
   const {
     handleSubmit,
@@ -29,14 +28,19 @@ export default function LoginScreen() {
       );
 
       if (response) {
-        console.log("respnse", response);
+        console.log("response", response);
         toast("You are logged in");
         const data = response.data;
         const { token } = data;
         const { username } = data;
+        const tokenExpireTime = new Date().getTime() + 3600000;
+
+        // Store user data and token information
         localStorage.setItem("username", username);
         localStorage.setItem("token", token);
         localStorage.setItem("isAuthenticated", true);
+        localStorage.setItem("tokenExpireTime", tokenExpireTime); // Store the token expiration time
+
         console.log("success");
       } else {
         toast.error("Something went wrong");
@@ -45,9 +49,12 @@ export default function LoginScreen() {
       router.push("/");
     } catch (err) {
       toast.error(getError(err));
-      console.log(err.message);
+      console.error(err.message);
     }
   };
+
+
+
 
   const [showPassword, setShowPassword] = useState(false);
 

@@ -19,6 +19,7 @@ const Header = ({ title }) => {
   const [length, setLength] = useState();
   const [auth, setAuth] = useState("");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [tokenExpireTime, setTokenExpireTime] = useState("");
   const toggleMobileNav = () => {
     setMobileNavOpen((prevState) => !prevState);
   };
@@ -46,6 +47,7 @@ const Header = ({ title }) => {
   // const cartItems = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
+    checkTokenExpiration();
     getCartItems();
     if (typeof window !== "undefined") {
       const user = localStorage.getItem("username")
@@ -64,6 +66,10 @@ const Header = ({ title }) => {
       }
     };
 
+    const tokenExpirationCheckInterval = setInterval(() => {
+      checkTokenExpiration();
+    }, 1800000);
+
     const handleClick = async () => {
       await getCartItems()
     }
@@ -73,6 +79,7 @@ const Header = ({ title }) => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clearInterval(tokenExpirationCheckInterval);
     };
   }, []);
 
@@ -80,19 +87,25 @@ const Header = ({ title }) => {
 
   // Logout function
   const handleLogout = async () => {
-    // Clear local storage
     localStorage.clear();
 
-    // Navigate to the homepage using Next.js router
     await router.push("/");
     window.location.reload();
   };
 
   // Logout after 1 hour
-  const timedLogout = () => {
-    setTimeout(() => {
-      handleLogout();
-    }, 3600000);
+  const checkTokenExpiration = () => {
+    if (typeof window === "undefined") return;
+    const expireTime = localStorage.getItem("tokenExpireTime");
+    if (!expireTime) return
+    console.log({ expireTime });
+    if (expireTime) {
+      const currentTime = new Date().getTime();
+      console.log("currentTime", currentTime);
+      if (currentTime > parseInt(expireTime)) {
+        handleLogout();
+      }
+    }
   };
 
   return (
@@ -130,12 +143,11 @@ const Header = ({ title }) => {
               </Link>
               {auth == "true" && (
                 <>
-                  {timedLogout()}
                   <a className={styles.navLinks}>{`Hey ${name}`}</a>
                   <Link href="/cart">
                     <p className={styles.navLinks}>
                       <span className="flex items-center">
-                        <AiOutlineShoppingCart size={26}/>
+                        <AiOutlineShoppingCart size={26} />
                         {length > 0 && (
                           <sup className="bg-[#946F3A] ml-1 rounded-full text-sm px-2 py-1">
                             {length}

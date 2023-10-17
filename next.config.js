@@ -8,6 +8,9 @@ module.exports = {
   future: {
     webpack5: true,
   },
+  images: {
+    domains: ['emaxapi.onrender.com'],
+  },
   webpack(config) {
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -16,3 +19,5 @@ module.exports = {
     return config;
   },
 };
+
+
