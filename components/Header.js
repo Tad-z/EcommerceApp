@@ -19,7 +19,6 @@ const Header = ({ title }) => {
   const [length, setLength] = useState();
   const [auth, setAuth] = useState("");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [tokenExpireTime, setTokenExpireTime] = useState("");
   const toggleMobileNav = () => {
     setMobileNavOpen((prevState) => !prevState);
   };
