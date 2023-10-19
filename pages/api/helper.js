@@ -9,6 +9,7 @@ export async function getServerData(url) {
       },
     });
     const data = await reqInstance.get(url);
+    console.log({ data });
     return data;
   }
 }

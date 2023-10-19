@@ -10,6 +10,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "../styles/form.module.css";
 
 export default function SignupScreen() {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -19,6 +20,7 @@ export default function SignupScreen() {
 
   const submitHandler = async ({ email, username, password }) => {
     try {
+      setIsLoading(true);
       const result = await ApiCall.postMethod(
         "https://emaxapi.onrender.com/user/signup",
         {
@@ -37,6 +39,8 @@ export default function SignupScreen() {
     } catch (err) {
       toast.error(getError(err));
       console.log("error2");
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -122,7 +126,9 @@ export default function SignupScreen() {
             )}
           </div>
           <div className="flex justify-center">
-            <button className={styles.button}>Sign Up</button>
+            <button className={`${isLoading ? styles.blurButton : styles.button}`}>
+              {isLoading ? "Loading..." : "Sign Up"}
+            </button>
           </div>
         </form>
       </div>

@@ -10,6 +10,7 @@ import styles from "../styles/form.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function LoginScreen() {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
     register,
@@ -19,6 +20,7 @@ export default function LoginScreen() {
   const router = useRouter();
   const submitHandler = async ({ username, password }) => {
     try {
+      setIsLoading(true);
       const response = await ApiCall.postMethod(
         "https://emaxapi.onrender.com/user/login",
         {
@@ -50,6 +52,8 @@ export default function LoginScreen() {
     } catch (err) {
       toast.error(getError(err));
       console.error(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -115,8 +119,8 @@ export default function LoginScreen() {
               <div className="text-red-500">{errors.password.message}</div>
             )}
           </div>
-          <button type="submit" className={styles.button}>
-            Log In
+          <button type="submit" className={`${isLoading ? styles.blurButton : styles.button}`}>
+            {isLoading ? "Loading..." : "Login"}
           </button>
           <div className="mb-2 mt-3">
             <p className="sm: text-sm">Don&apos;t have an account? &nbsp;

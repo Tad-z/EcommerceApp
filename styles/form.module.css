@@ -133,6 +133,25 @@
     );
 }
 
+.blurButton {
+    opacity: 0.8; 
+    pointer-events: none; 
+    border: none;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
+    background: linear-gradient(
+        130deg,
+        #9f7d4e,
+        #a98c61
+    );
+    color: #f7f7f1;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
 .link {
     text-decoration: underline;
     font-weight: 600;
