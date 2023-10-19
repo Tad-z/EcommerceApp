@@ -284,6 +284,60 @@
   color: #eaeaea;
 }
 
+
+.pagination {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  margin: 96px auto;
+  margin-top: 25px;
+}
+.pageBtn {
+  background-color: white;
+  border: 1px solid #946f3a;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  background-color: #5e4c34;
+  color: white;
+}
+.btnIcon {
+  height: 24px;
+  width: 24px;
+  stroke: #6e5e48;
+}
+.btn:hover .btn-icon {
+  stroke: white;
+}
+.links {
+  font-size: 18px;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.links:hover {
+  background-color: #6e5e48;
+  color: white;
+  
+}
+.color {
+  background-color: #6e5e48;
+  color: white;
+  border-radius: 50%;
+}
+
 /* .form {
   @apply  flex justify-center mb-6
 }

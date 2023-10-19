@@ -10,7 +10,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Footer() {
   return (
-    <footer className=' py-24 mt-[32px] px-8 border-t-[1px]   border-[#eee] bg-white'>
+    <footer className=' py-24 px-8 border-t-[1px]   border-[#eee] bg-white'>
       <div className=' my-0 mx-auto grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-start '>
         <div className='flex flex-col text-xs justify-center text-gray-800'>
           <a href="#" className="block mb-3">
