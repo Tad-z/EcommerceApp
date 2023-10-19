@@ -4,12 +4,12 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import React from "react";
 import store from "../reducers/store";
+import { RingLoader } from "react-spinners"
 import { Provider } from "react-redux";
-import { RingLoader } from "react-spinners";
-import { Router } from "next/router";
+import Router from "next/router";
 
-function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = React.useState(true);
+export default function App({ Component, pageProps }) {
+  const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
 
     const start = () => {
@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
       setLoading(true);
     };
     const end = () => {
+      console.log("finished");
       setLoading(false);
     };
     Router.events.on("routeChangeStart", start);
@@ -49,4 +50,4 @@ function MyApp({ Component, pageProps }) {
 
 
 
-export default MyApp;
+// export default MyApp;
