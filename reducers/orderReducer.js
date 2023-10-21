@@ -3,14 +3,15 @@ import { createSlice } from "@reduxjs/toolkit"
 export const orderReducer = createSlice({ 
     name: "order",
     initialState: {
-        queue: []
+        queue: [],
     },
     reducers: {
         setOrder: (state, action) => {
             let { order } = action.payload;
+            let { cartItems } = order;
             return {
                 ...state,
-                queue: order
+                queue: order,
             }
         },
     },  

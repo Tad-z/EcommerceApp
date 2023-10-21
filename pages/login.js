@@ -30,7 +30,6 @@ export default function LoginScreen() {
       );
 
       if (response) {
-        console.log("response", response);
         toast("You are logged in");
         const data = response.data;
         const { token } = data;
@@ -43,10 +42,8 @@ export default function LoginScreen() {
         localStorage.setItem("isAuthenticated", true);
         localStorage.setItem("tokenExpireTime", tokenExpireTime); // Store the token expiration time
 
-        console.log("success");
       } else {
         toast.error("Something went wrong");
-        console.log("error1");
       }
       router.push("/");
     } catch (err) {

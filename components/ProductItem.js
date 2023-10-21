@@ -24,15 +24,11 @@ export default function ProductItem({ product }) {
 
           if (result) {
             toast("You have added to cart successfully");
-            console.log("success");
-            // router.push("/cart");
           } else {
             toast.error("Something went wrong");
-            console.log("error1");
           }
         } catch (err) {
           toast.error(getError(err));
-          console.log("error2");
         }
       }
     }

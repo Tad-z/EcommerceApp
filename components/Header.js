@@ -30,7 +30,6 @@ const Header = ({ title }) => {
       if (!cartItems) return
       const { data } = cartItems
       let count = data.count
-      console.log("count", count);
       if (count) {
         setLength(count)
       }
@@ -57,7 +56,6 @@ const Header = ({ title }) => {
     const handleScroll = () => {
       // getCartItems()
       let y = window.scrollY;
-      console.log("scroll", y);
       if (y > visualViewport.height) {
         setIsFixed(true);
       } else {
@@ -97,10 +95,8 @@ const Header = ({ title }) => {
     if (typeof window === "undefined") return;
     const expireTime = localStorage.getItem("tokenExpireTime");
     if (!expireTime) return
-    console.log({ expireTime });
     if (expireTime) {
       const currentTime = new Date().getTime();
-      console.log("currentTime", currentTime);
       if (currentTime > parseInt(expireTime)) {
         handleLogout();
       }

@@ -17,7 +17,7 @@ export const useFetchCart = () => {
     setGetData((prev) => ({ ...prev, isLoading: true }));
 
     (async () => {
-      const { data } = await getServerData(`https://emaxapi.onrender.com/cart`);
+      const { data } = await getServerData(`http://localhost:4000/cart`);
       let cartItems = data.cartItems;
       try {
         if (!cartItems) {

@@ -25,7 +25,7 @@ export default function ShippingScreen() {
   const submitHandler = async ({ fullname, phoneNumber, city, adress }) => {
     try {
       const response = await postServerData(
-        "https://emaxapi.onrender.com/orders",
+        "http://localhost:4000/orders",
         {
           fullname,
           phoneNumber,
@@ -34,11 +34,9 @@ export default function ShippingScreen() {
         }
       );
       if (response) {
-        console.log("response");
         toast("Order Saved");
         router.push("/order");
       } else {
-        console.log("error");
         toast.error("Something went wrong");
       }
     } catch (err) {

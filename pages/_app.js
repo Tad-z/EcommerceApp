@@ -13,11 +13,9 @@ export default function App({ Component, pageProps }) {
   React.useEffect(() => {
 
     const start = () => {
-      console.log("start");
       setLoading(true);
     };
     const end = () => {
-      console.log("finished");
       setLoading(false);
     };
     Router.events.on("routeChangeStart", start);

@@ -17,10 +17,10 @@ import { RingLoader } from "react-spinners"
 export default function Order() {
     const dispatch = useDispatch();
     const [{ isLoading, serverError }] = useFetchOrder();
-    useFetchCart();
+    // useFetchCart();
     const orders = useSelector((state) => state.order.queue);
-    const cart = useSelector((state) => state.cart.cart);
-    let total = useSelector((state) => state.cart.price);
+    // const cart = useSelector((state) => state.cart.cart);
+    // let total = useSelector((state) => state.cart.price);
     //    const cartItems = cart.map((item) => {
     //     return item.CartId
     //    })
@@ -42,6 +42,11 @@ export default function Order() {
         return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
     const order = orders[orders.length - 1];
+    let cart = []
+    let total = 0
+    if (order && order.cartItems) {
+        cart = order.cartItems
+    }
     let [fullname, phoneNumber, city, adress, email] = ""
     if (order && order.fullname) {
         fullname = order.fullname
@@ -62,7 +67,12 @@ export default function Order() {
     if (order && order.user) {
         email = order.user.email
     }
-    // console.log(email)
+    
+    total = cart.reduce(
+        (a,c) => a + c.product.price * c.quantity, 0
+    )
+
+ 
 
     const clearCartItems = async () => {
         dispatch(clearCart());
@@ -112,6 +122,7 @@ export default function Order() {
                                 <CartOrder
                                     key={item.slug}
                                     item={item}
+                                    total={total}
                                 />
                             </>
                         ))}

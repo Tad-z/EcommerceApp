@@ -40,14 +40,11 @@ export default function CartScreen() {
   };
 
   const updateProducts = async (item) => {
-    console.log(item);
     const productId = item.CartId;
-    console.log("id", productId);
     const post = { quantity: item.quantity };
     const quantity = item.quantity;
     dispatch(updateCart({ productId, quantity }));
 
-    console.log("q", quantity);
     await axios.patch(`https://emaxapi.onrender.com/cart/${productId}`, post);
   };
 

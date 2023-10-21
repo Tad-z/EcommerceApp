@@ -10,6 +10,8 @@ import Footer from "../components/Footer";
 import { AiOutlineSearch } from "react-icons/ai";
 // import { RingLoader } from "react-spinners"
 import Pagination from "../components/Pagination";
+import { useFetchProducts } from "../hooks/fetchProducts";
+import { useSelector } from "react-redux";
 
 
 
@@ -18,40 +20,25 @@ export async function getServerSideProps({ query }) {
   const defaultEndpoint = `https://emaxapi.onrender.com/products/page/?page=${page}`
   const res = await fetch(defaultEndpoint);
   const data = await res.json();
-  console.log(data);
   return { props: { page, data } }
 }
 
 
 export default function Home({ page, data }) {
-  // const [isLoading, setIsLoading] = useState(true);
   const { result = [] } = data || {};
-  const products = result.products;
+  let products = result.products;
   const pages = result.totalPages;
   const router = useRouter();
   const [input, setInput] = useState("")
-  const Products = products.filter((product) => product.title.toLowerCase().includes(input))
+  useFetchProducts();
+  const apiData = useSelector((state) => state.products.queue);
+  if(input) products = apiData.filter((product) => product.title.toLowerCase().includes(input))
   const featuredProducts = products.slice(5, 8) || (12, 15)
 
   const handlePageChange = (newPage) => {
     router.push(`/?page=${newPage}`);
   };
-  // setTimeout(() => {
-  //   setIsLoading(false)
-  // }, 3000);
-
-  // if (isLoading)
-  //   return (
-  //     <div className="loader-container">
-  //       <div>
-  //         <RingLoader
-  //           color='#5e4c34'
-  //           loading={isLoading}
-  //           size={80}
-  //         />
-  //       </div>
-  //     </div>
-  //   );
+  
 
 
   return (
@@ -69,7 +56,7 @@ export default function Home({ page, data }) {
           <AiOutlineSearch className={styles.search} />
         </div>
         <div className={styles.productContainer}>
-          {Products.map((product) => <ProductItem product={product} key={product._id} />)}
+          {products.map((product) => <ProductItem product={product} key={product._id} />)}
         </div>
         <div className="flex justify-center mt-1 mb-2">
           <Pagination currentPage={page} totalPages={pages} onPageChange={handlePageChange} />
