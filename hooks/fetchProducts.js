@@ -22,7 +22,7 @@ export const useFetchProducts = () => {
 //   const data = await res.json();
 
   // const products = result.products;
-            const { data }   = await getServerData(`http://localhost:4000/products/`);
+            const { data }   = await getServerData(`https://emaxapi.onrender.com/products/`);
             console.log({data});
             let { products } = data;
             console.log({products});

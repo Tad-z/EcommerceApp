@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import { clearCart } from '../reducers/cartReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFetchOrder } from '../hooks/fetchOrder'
-import { useFetchCart } from '../hooks/fetchCart'
+// import { useFetchCart } from '../hooks/fetchCart'
 import CartOrder from "../components/CartOrder";
 import Link from 'next/link'
 import axios from 'axios'

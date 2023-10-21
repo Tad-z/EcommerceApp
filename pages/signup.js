@@ -32,6 +32,7 @@ export default function SignupScreen() {
       if (result) {
         toast("You have signed up");
       } else {
+        toast.error("Something went wrong");
       }
       router.push('/login')
     } catch (err) {

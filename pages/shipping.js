@@ -25,7 +25,7 @@ export default function ShippingScreen() {
   const submitHandler = async ({ fullname, phoneNumber, city, adress }) => {
     try {
       const response = await postServerData(
-        "http://localhost:4000/orders",
+        "https://emaxapi.onrender.com/orders",
         {
           fullname,
           phoneNumber,

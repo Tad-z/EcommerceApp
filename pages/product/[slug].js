@@ -23,6 +23,7 @@ export default function ProductScreen({ data }) {
   const { query } = useRouter()
   const { slug } = query;
   const ratingChanged = (newRating) => {
+    console.log(newRating);
   }
   const product = products?.find((x) => x.slug === slug)
 
