@@ -23,9 +23,7 @@ export const useFetchProducts = () => {
 
   // const products = result.products;
             const { data }   = await getServerData(`https://emaxapi.onrender.com/products/`);
-            console.log({data});
             let { products } = data;
-            console.log({products});
             try {
               setTimeout(() => {
                 setGetData((prev) => ({ ...prev, isLoading: false }));
