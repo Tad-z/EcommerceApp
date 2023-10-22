@@ -33,7 +33,7 @@ export default function Home({ page, data }) {
   console.log(input);
   useFetchProducts();
   const apiData = useSelector((state) => state.products.queue);
-  if(input) products = apiData.filter((product) => product.title.toLowerCase().includes(input))
+  if(input) products = apiData.filter((product) => product.title.toLowerCase().includes(input.toLocaleLowerCase()))
   const featuredProducts = products.slice(5, 8) || (12, 15)
 
   const handlePageChange = (newPage) => {
