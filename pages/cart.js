@@ -10,6 +10,7 @@ import { removeItemFromCart, updateCart } from "../reducers/cartReducer";
 import styles from "../styles/Home.module.css";
 import { RingLoader } from "react-spinners"
 
+
 export default function CartScreen() {
   const dispatch = useDispatch();
   const [{ isLoading }] = useFetchCart();
@@ -56,50 +57,50 @@ export default function CartScreen() {
         {cartItems ? (
           <>
             {cartItems?.length === 0 ? (
-              <div>
-                <h1 className="my-7 text-xl font-bold">Shopping Cart</h1>
+              <div className="mx-auto">
+                <h1 className="my-7  text-xl font-bold">Shopping Cart</h1>
                 <p>Cart is empty. <span className="hover:underline"><Link href="/">Continue Shopping</Link></span></p>
               </div>
             ) : (
-              <>
+              <div className="m-9 pr-4">
                 <h1 className="mt-11 mb-6 text-xl font-bold">Shopping Cart</h1>
-                <div className="grid grid-cols-4 ">
+                <div className="grid grid-cols-4 gap-10">
                   <div className="md:col-span-3 lg:col-span-3">
-                    <div>
-                      <table className="min-w-full">
-                        <thead className="border-b ">
-                          <tr>
-                            <th className="px-5 sm:text-lg text-left">Products</th>
-                            <th className="p-5 sm:text-lg text-center">Price</th>
-                            <th className="p-5 sm:text-lg text-right">Quantity</th>
-                            <th className="p-5 sm:text-lg">Total</th>
-                            <th className="p-5 sm:text-lg text-right">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {cartItems?.map((item) => (
-                            <>
-                              <CardCart
-                                key={item.slug}
-                                updateProducts={updateProducts}
-                                removeItemHandler={removeItemHandler}
-                                item={item}
-                              />
-                            </>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                    {cartItems?.map((item) => (
+                      <>
+                        <CardCart
+                          key={item.slug}
+                          updateProducts={updateProducts}
+                          removeItemHandler={removeItemHandler}
+                          item={item}
+                        />
+                      </>
+                    ))}
                   </div>
-                  <div className="checkout-card place-self-center p-5">
+                  <div className="checkout-card mx-auto place-self-start p-5">
                     <ul>
+                      <li className="text-center border-b text-xl font-bold my-4 py-1">
+                        Order Summary ({cartItems?.length} items)
+                      </li>
                       <li>
-                        <div className="pb-3 text-xl">
-                          Subtotal ({cartItems?.length}) : N
-                          {cartItems?.reduce(
+                        <div className="flex justify-between">
+                          <p>Shipping</p>
+                          <div>N0.00</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="flex justify-between border-dotted pb-3 border-b-2">
+                          <p>Taxes</p>
+                          <div>N0.00</div>
+                        </div>
+                      </li>
+                      <li className="py-5">
+                        <div className="flex justify-between">
+                          <p>Order Total</p>
+                          <div>N{cartItems?.reduce(
                             (a, c) => a + c.product.price * c.quantity,
                             0
-                          )}
+                          )}</div>
                         </div>
                       </li>
                       <li>
@@ -113,11 +114,11 @@ export default function CartScreen() {
                     </ul>
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </>
         ) : (
-          <div>
+          <div className="mx-auto">
             <h1 className="my-7 text-xl font-bold">Shopping Cart</h1>
             <p>Cart is empty. <span className="hover:underline"><Link href="/">Continue Shopping</Link></span></p>
           </div>

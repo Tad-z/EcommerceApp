@@ -67,7 +67,7 @@ footer a:hover {
 
 
 .checkout-card {
-  @apply mt-2 block w-[300px] rounded-lg border border-blue-200 shadow-md h-44;
+  @apply mt-2 block w-[300px] h-auto rounded-lg border border-blue-200 shadow-md;
 }
 
 .header {
@@ -112,7 +112,7 @@ footer a:hover {
 
 
 .update-products-button {
-  @apply rounded-md w-20 m-auto border mb-1 border-[#5e4c34] p-2 shadow outline-none hover:bg-[#76592e] hover:text-white;
+  @apply rounded-md w-20 border border-[#5e4c34] shadow outline-none hover:bg-[#76592e] hover:text-white;
 }
 
 .next-button {

@@ -30,11 +30,10 @@ export default function Home({ page, data }) {
   const pages = result.totalPages;
   const router = useRouter();
   const [input, setInput] = useState("")
-  console.log(input);
   useFetchProducts();
   const apiData = useSelector((state) => state.products.queue);
-  if(input) products = apiData.filter((product) => product.title.toLowerCase().includes(input.toLocaleLowerCase()))
   const featuredProducts = products.slice(5, 8) || (12, 15)
+  if(input) products = apiData.filter((product) => product.title.toLowerCase().includes(input.toLocaleLowerCase()))
 
   const handlePageChange = (newPage) => {
     router.push(`/?page=${newPage}`);
