@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCloseCircle } from "react-icons/ai";
-import { BiXCircle } from 'react-icons/bi';
 
 const CardCart = ({ item, removeItemHandler, updateProducts }) => {
     const [count, setCount] = useState(item.quantity);
