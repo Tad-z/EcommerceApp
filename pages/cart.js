@@ -62,7 +62,7 @@ export default function CartScreen() {
                 <p>Cart is empty. <span className="hover:underline"><Link href="/">Continue Shopping</Link></span></p>
               </div>
             ) : (
-              <div className="m-9 pr-4">
+              <div className="m-4 lg:m-9">
                 <h1 className="mt-11 mb-6 text-xl font-bold">Shopping Cart</h1>
                 <div className="grid grid-cols-4 gap-10">
                   <div className="md:col-span-3 lg:col-span-3">

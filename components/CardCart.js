@@ -29,7 +29,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
     const updatedPrice = item.product.price * count;
 
     return (
-        <div className="border-t-2 p-4 flex flex-col items-start justify-between gap-16 lg:flex-row">
+        <div className="border-t-2 py-4 flex flex-col items-start justify-between gap-16 lg:flex-row">
             <div className='flex'>
                 <Link href={`/product/${item.product.slug}`}>
                     <div>
