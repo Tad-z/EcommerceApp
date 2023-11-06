@@ -95,7 +95,7 @@ export default function ProductScreen({ data }) {
               </li>
               <br></br>
               <li>
-                <h1 className='text-2xl text-red-500'>N{product?.price}</h1>
+                <h1 className='text-2xl text-red-500'>₦{product?.price}</h1>
               </li>
               <br></br>
               <li>

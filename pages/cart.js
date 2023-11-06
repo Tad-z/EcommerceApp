@@ -97,7 +97,7 @@ export default function CartScreen() {
                       <li className="py-5">
                         <div className="flex justify-between">
                           <p>Order Total</p>
-                          <div>N{cartItems?.reduce(
+                          <div>₦{cartItems?.reduce(
                             (a, c) => a + c.product.price * c.quantity,
                             0
                           )}</div>

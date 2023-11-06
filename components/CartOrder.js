@@ -21,7 +21,7 @@ const CardOrder = ({ item, total }) => {
                 <div>
                     <p>{item.product.title}</p>
                     <p className='p-1 flex items'>Qty:{item.quantity}</p>
-                    <p className='p-1 text-[#946F3A]'>N{item.product.price}</p>
+                    <p className='p-1 text-[#946F3A]'>₦{item.product.price}</p>
                 </div>
             </div>
         </>

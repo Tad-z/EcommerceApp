@@ -42,7 +42,7 @@ export default function ProductItem({ product }) {
       />
       <div className="flex flex-col justify-center p-5">
         <h2 className="text-lg text-left">{product.title}</h2>
-        <h2 className="mb-5 text-left text-lg font-bold">N{product.price}</h2>
+        <h2 className="mb-5 text-left text-lg font-bold">₦{product.price}</h2>
         <Link href={`/product/${product.slug}`}>
           <button type="button" className={styles.viewdetailsbutton}>
             View product details

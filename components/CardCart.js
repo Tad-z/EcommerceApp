@@ -39,7 +39,7 @@ const CardCart = ({ item, removeItemHandler, updateProducts }) => {
                 <div className='flex flex-col gap-14 px-5'>
                     <p className=''>{item.product.title}</p>
 
-                    <p className='font-semibold'>N{updatedPrice}</p>
+                    <p className='font-semibold'>₦{updatedPrice}</p>
                 </div>
 
             </div>

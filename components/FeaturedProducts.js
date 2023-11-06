@@ -46,7 +46,7 @@ export default function FeaturedProducts({ product }) {
             <img className={style.cardImage} alt={product.name} src={`https://emaxapi.onrender.com/${product.productImage}`} />
             <div className='flex flex-col justify-center px-5 py-3'>
                 <h2 className='text-lg text-left'>{product.title}</h2>
-                <h2 className='mb-2 text-left text-lg font-bold'>N{product.price}</h2>
+                <h2 className='mb-2 text-left text-lg font-bold'>₦{product.price}</h2>
                 <button
                     type="button"
                     onClick={addToCartHandler}

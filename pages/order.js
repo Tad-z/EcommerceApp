@@ -42,6 +42,12 @@ export default function Order() {
         return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
     const order = orders[orders.length - 1];
+    const sendMail = async () => {
+        await axios.post(`/api/email/route`, {
+            orderData: order
+        })
+    }
+    sendMail()
     let cart = []
     let total = 0
     if (order && order.cartItems) {
