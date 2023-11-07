@@ -42,12 +42,7 @@ export default function Order() {
         return <h3 className="text-light">{serverError || "Unknown Error"}</h3>;
 
     const order = orders[orders.length - 1];
-    const sendMail = async () => {
-        await axios.post(`https://emaxapi.onrender.com/orders/sendMail`, {
-            orderData: order
-        })
-    }
-    sendMail()
+
     let cart = []
     let total = 0
     if (order && order.cartItems) {
@@ -73,16 +68,19 @@ export default function Order() {
     if (order && order.user) {
         email = order.user.email
     }
-    
+
     total = cart.reduce(
-        (a,c) => a + c.product.price * c.quantity, 0
+        (a, c) => a + c.product.price * c.quantity, 0
     )
 
- 
 
-    const clearCartItems = async () => {
+
+    const completeOrder = async () => {
         dispatch(clearCart());
         await axios.delete(`https://emaxapi.onrender.com/cart/`);
+        await axios.post(`https://emaxapi.onrender.com/orders/sendMail`, {
+            orderData: order
+        })
     }
 
     return (
@@ -140,7 +138,7 @@ export default function Order() {
 
                 </div>
                 <div className='w-full flex justify-center border-t p-10'>
-                    <button className={styles.loginButton} onClick={clearCartItems}>
+                    <button className={styles.loginButton} onClick={completeOrder}>
                         <Link href='/thankyou'> Complete Order </Link>
                     </button>
                 </div>
