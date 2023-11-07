@@ -2,8 +2,10 @@
 
 # dependencies
 /node_modules
-/package-lock.json
-/package.json
+/.env
+.env
+package-lock.json
+package.json
 /.pnp
 .pnp.js
 
@@ -28,7 +30,8 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+# .env*.local
+
 
 # vercel
 .vercel
