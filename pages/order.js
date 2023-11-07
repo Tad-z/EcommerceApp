@@ -43,7 +43,7 @@ export default function Order() {
 
     const order = orders[orders.length - 1];
     const sendMail = async () => {
-        await axios.post(`/api/email/route`, {
+        await axios.post(`https://emaxapi.onrender.com/orders/sendMail`, {
             orderData: order
         })
     }
