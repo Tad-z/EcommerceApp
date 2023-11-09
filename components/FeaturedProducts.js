@@ -5,6 +5,9 @@ import { postServerData } from "../pages/api/helper";
 import { getError } from "../reducers/error";
 import { useRouter } from "next/router";
 import style from "../styles/Home.module.css";
+import { useDispatch } from "react-redux";
+
+import * as Action from "../reducers/cartReducer";
 
 
 const defaultEndpoint = "https://emaxapi.onrender.com/products"
@@ -16,6 +19,7 @@ export async function getServerSideProps() {
 
 
 export default function FeaturedProducts({ product }) {
+  const dispatch = useDispatch();
     const router = useRouter();
     const addToCartHandler = async () => {
         if (typeof window !== "undefined") {
@@ -29,6 +33,7 @@ export default function FeaturedProducts({ product }) {
                 `https://emaxapi.onrender.com/cart`,
                 post
               );
+              dispatch(Action.addToCart());
               
               if (result) {
                 toast("You have added to cart successfully");

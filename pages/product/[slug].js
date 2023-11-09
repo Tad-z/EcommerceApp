@@ -9,6 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { postServerData } from '../api/helper';
 import { getError } from '../../reducers/error';
 import styles from '../../styles/Home.module.css'
+import { useDispatch } from "react-redux";
+
+import * as Action from "../../reducers/cartReducer";
 
 export async function getServerSideProps() {
   const defaultEndpoint = `https://emaxapi.onrender.com/products`
@@ -18,6 +21,7 @@ export async function getServerSideProps() {
 }
 
 export default function ProductScreen({ data }) {
+  const dispatch = useDispatch();
   const { products = [] } = data || {};
   const router = useRouter();
   const { query } = useRouter()
@@ -45,6 +49,8 @@ export default function ProductScreen({ data }) {
             `https://emaxapi.onrender.com/cart`,
             post
           );
+          dispatch(Action.addToCart());
+
           if (result) {
             toast("You have added to cart successfully");
             // router.push("/cart");

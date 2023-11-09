@@ -69,7 +69,7 @@ export default function CartScreen() {
                     {cartItems?.map((item) => (
                       <>
                         <CardCart
-                          key={item.slug}
+                          key={item.CartId}
                           updateProducts={updateProducts}
                           removeItemHandler={removeItemHandler}
                           item={item}
@@ -85,13 +85,13 @@ export default function CartScreen() {
                       <li>
                         <div className="flex justify-between">
                           <p>Shipping</p>
-                          <div>N0.00</div>
+                          <div>₦0.00</div>
                         </div>
                       </li>
                       <li>
                         <div className="flex justify-between border-dotted pb-3 border-b-2">
                           <p>Taxes</p>
-                          <div>N0.00</div>
+                          <div>₦0.00</div>
                         </div>
                       </li>
                       <li className="py-5">

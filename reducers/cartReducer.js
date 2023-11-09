@@ -16,6 +16,7 @@ export const cartReducer = createSlice({
       return {
         ...state,
         cart: cartItems,
+        cartItems: cartItems.length,
         price: subtotal,
       };
     },
@@ -28,6 +29,12 @@ export const cartReducer = createSlice({
             product.quantity = quantity;
         }
     },
+    addToCart: (state, action) => {
+      return {
+        ...state,
+        cartItems: state.cartItems + 1,
+      };
+    },
     removeItemFromCart: (state, action) => {
       const { productId } = action.payload;
       const filteredCart = state.cart.filter(
@@ -36,12 +43,7 @@ export const cartReducer = createSlice({
       return {
         ...state,
         cart: filteredCart,
-      };
-    },
-    countCartItems: (state) => {
-      return {
-        ...state,
-        cartItems: state.cart.reduce((a, c) => a + c.quantity, 0),
+        cartItems: filteredCart.length,
       };
     },
     clearCart: (state) => {
@@ -55,6 +57,6 @@ export const cartReducer = createSlice({
   },
 });
 
-export const { setCart, updateCart, removeItemFromCart, clearCart  } = cartReducer.actions;
+export const { setCart, updateCart,addToCart, removeItemFromCart, clearCart  } = cartReducer.actions;
 
 export default cartReducer.reducer;

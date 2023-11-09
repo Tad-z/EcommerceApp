@@ -8,8 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo2.jpg";
 import { useRouter } from "next/router";
-import { getServerData } from "../pages/api/helper";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 
 
@@ -24,29 +24,17 @@ const Header = ({ title }) => {
   };
   const [isFixed, setIsFixed] = useState(false);
 
-  const getCartItems = async () => {
-    try {
-      const cartItems = await getServerData("https://emaxapi.onrender.com/cart")
-      if (!cartItems) return
-      const { data } = cartItems
-      let count = data.count
-      if (count) {
-        setLength(count)
-      }
-      return count;
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
 
-
-  // useFetchCart();
-  // useSelector((state) => console.log(state));
-  // const cartItems = useSelector((state) => state.cart.cart);
+  useSelector((state) => console.log({state}));
+  const count = useSelector((state) => state.cart.cartItems);
+  
 
   useEffect(() => {
+    if(count) {
+      console.log(count);
+      setLength(count)
+    }
     checkTokenExpiration();
-    getCartItems();
     if (typeof window !== "undefined") {
       const user = localStorage.getItem("username")
       setName(user);
@@ -54,7 +42,6 @@ const Header = ({ title }) => {
       setAuth(isauth);
     }
     const handleScroll = () => {
-      // getCartItems()
       let y = window.scrollY;
       if (y > visualViewport.height) {
         setIsFixed(true);
@@ -67,18 +54,14 @@ const Header = ({ title }) => {
       checkTokenExpiration();
     }, 1800000);
 
-    const handleClick = async () => {
-      await getCartItems()
-    }
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("click", handleClick);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearInterval(tokenExpirationCheckInterval);
     };
-  }, []);
+  }, [count]);
 
   const router = useRouter();
 

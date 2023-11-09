@@ -78,7 +78,7 @@ export default function Order() {
     const completeOrder = async () => {
         dispatch(clearCart());
         await axios.delete(`https://emaxapi.onrender.com/cart/`);
-        await axios.post(`https://emaxapi.onrender.com/orders/sendMail`, {
+        await axios.post(`http://localhost:4000/orders/sendMail`, {
             orderData: order
         })
     }
