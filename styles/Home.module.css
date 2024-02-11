@@ -227,8 +227,10 @@
   background-color: #eaeaea;
 }
 
+.cardImage:hover {
+  scale: 1.08;
+}
 .card:hover {
-  scale: 1.03;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
