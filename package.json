@@ -43,5 +43,9 @@
     "fs": false,
     "os": false,
     "path": false
+  },
+  "engines": {
+    "node": "22.x"
   }
+
 }

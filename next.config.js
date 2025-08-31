@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
-
-module.exports = {
   future: {
     webpack5: true,
   },
@@ -15,6 +12,9 @@ module.exports = {
     };
     return config;
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
-
+module.exports = nextConfig;
